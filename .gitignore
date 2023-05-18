@@ -1,0 +1,8 @@
+# env variables
+.env
+
+# production/bundled code
+dist/
+public/js
+node_modules/
+.DS_Store
