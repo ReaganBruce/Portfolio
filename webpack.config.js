@@ -4,6 +4,9 @@ const nodeExternals = require('webpack-node-externals')
 const clientConfig = {
     mode: process.env.NODE_ENV || 'development',
     entry: './src/client/index.tsx',
+    devServer: {
+        stats: 'errors-only'
+    },
     devtool: 'inline-source-map',
     module: {
         rules: [
@@ -30,6 +33,9 @@ const clientConfig = {
 const serverConfig = {
     mode: process.env.NODE_ENV || 'development',
     entry: './src/server/server.ts',
+    devServer: {
+        stats: 'errors-only'
+    },
     module: {
         rules: [
             {
