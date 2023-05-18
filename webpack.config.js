@@ -1,5 +1,6 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const clientConfig = {
     mode: process.env.NODE_ENV || 'development',
@@ -28,6 +29,7 @@ const clientConfig = {
         filename: 'app.js',
         path: path.resolve(__dirname, 'public/js')
     },
+    plugins: [new HtmlWebpackPlugin({ template: 'public/index.html' })]
 }
 
 const serverConfig = {

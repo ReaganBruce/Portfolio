@@ -1,13 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from 'mongoose';
 
+
 //MongoDB Schema Import
 import { Project } from "../models/projectsMod";
+
 
 const allProjects = async (req: Request, res: Response, next: NextFunction) => {
   const findProjects = await Project.find();
   try {
-    res.status(200).json({ message: "Success.", count: findProjects.length, projects: findProjects });
+      res.status(200).json({ message: "Success.", count: findProjects.length, projects: findProjects });
   } catch (error) {
     next(error)
   }
@@ -32,7 +34,7 @@ const singleProject = async (req: Request, res: Response, next: NextFunction) =>
 
 const createProject = async (req: Request, res: Response, next: NextFunction) => {
   const projectBody = req.body
-  const projectImage = req.file.buffer
+  const projectImage = req.file?.buffer
   const projectData = await Project.create({
     projectName: projectBody.projectName,
     projectImg: projectImage,
