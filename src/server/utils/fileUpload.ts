@@ -8,7 +8,6 @@ const uploadFile = multer({
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) { // regex file extension validation
       return cb(new Error("Image extension not satisfied."));
     }
-
     cb(undefined, true);
   },
 });

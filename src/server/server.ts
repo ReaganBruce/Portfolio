@@ -12,9 +12,8 @@ import { databaseConnection } from "./db/config";
 //Route Import
 import routes from "./routes/index";
 
-//Client Routes
-const publicPath = path.join(__dirname, "../public/index.html")
-const clientRoutes = ['/', '/test']
+//Client Import
+import client from './client.json'
 
 //Middleware Import
 import { notFoundHandler, globalErrorHandler } from "./middleware/errorHandler";
@@ -31,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('dev'))
 app.use(routes);
-app.get(clientRoutes, (req, res) => res.sendFile(publicPath))
+app.get(client.routes, (req, res) => res.sendFile(path.join(__dirname, '../public/index.html')))
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
 
