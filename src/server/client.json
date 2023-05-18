@@ -1,5 +1,7 @@
 {
     "routes": [
-        "/test"
+        "/",
+        "/projects",
+        "/projects/:id"
     ]
 }

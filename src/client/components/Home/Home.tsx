@@ -10,4 +10,4 @@ const Home: React.FC<IHome> = () => {
 
 interface IHome { }
 
-export default Home
+export default Home;
