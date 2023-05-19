@@ -3,19 +3,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 //View Imports
-import HomeView from "./components/Home/HomeView"
-// import ProjectDetailsView from './components/ProjectDetails/ProjectDetailsView';
+import ProjectDetailsView from './components/ProjectDetails/ProjectDetailsView';
 import ProjectsView from "./components/Projects/ProjectsView";
-import ProjectDetails from "./components/ProjectDetails/ProjectDetails";
+import AboutView from "./components/About/AboutView";
+import InterestsView from "./components/Interests/InterestsView";
+import HomeView from "./components/Home/HomeView"
 
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomeView />}></Route>
+        <Route path="/projects/:id" element={<ProjectDetailsView />}></Route>
         <Route path="/projects" element={<ProjectsView />}></Route>
-          <Route path="/projects/:id" element={<ProjectDetails />}></Route>
+        <Route path="/about" element={<AboutView />}></Route>
+        <Route path="/interests" element={<InterestsView />}></Route>
+        <Route path="/" element={<HomeView />}></Route>
       </Routes>
     </Router>
   )

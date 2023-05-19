@@ -1,7 +1,8 @@
 {
     "routes": [
-        "/",
+        "/projects/:projectid",
         "/projects",
-        "/projects/:id"
+        "/interests",
+        "/about"
     ]
 }
