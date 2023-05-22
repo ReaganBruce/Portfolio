@@ -8,7 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "lib": ["ES2017"],
-    "types": [],
     "typeRoots": ["./src/server/types"],
     "strict": true
   },

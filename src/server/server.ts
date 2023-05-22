@@ -12,7 +12,7 @@ import config from './configs/config'
 import routes from "./routes/index";
 
 //Client Import
-import client from './client.json'
+import client from './configs/client.json'
 
 //Middleware Import
 import { notFoundHandler, globalErrorHandler } from "./middleware/errorHandler";
