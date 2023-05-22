@@ -1,13 +1,12 @@
-import * as dotenv from "dotenv";
-dotenv.config();
 import express from 'express'
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import morgan from 'morgan';
 import path from 'path';
 
-//MongoDB Config Import
+//Config Import
 import { databaseConnection } from "./db/config";
+import config from './configs/config'
 
 //Route Import
 import routes from "./routes/index";
@@ -34,13 +33,9 @@ app.get(client.routes, (req, res) => res.sendFile(path.join(__dirname, '../publi
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
 
-
-//typecast process.env as number; default type is string | undefined
-const PORT = Number(process.env.PORT || 3000);
-
 mongoose.connection.once("open", () => {
   console.log(`MongoDB Connection: ${mongoose.connection.host}`);
-  app.listen(PORT, () =>
-    console.log(`Server is running on: ${PORT}`)
+  app.listen(config.application.port, () =>
+    console.log(`Server is running on: ${config.application.port}`)
   );
 });

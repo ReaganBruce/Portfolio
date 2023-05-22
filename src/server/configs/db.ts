@@ -1,8 +1,9 @@
 import mongoose, { ConnectOptions } from "mongoose";
+import config from './config'
 
 
 const databaseConnection = async () => {
-  const mongoUri = String(process.env.MONGO_URI);
+  const mongoUri = String(config.database.mongo);
   try {
     await mongoose.connect(mongoUri, <ConnectOptions> {
       useUnifiedTopology: true,
