@@ -1,7 +1,7 @@
 import React from "react";
 
 //ProjectDetails Component Import
-import ProjectDetails from "./ProjectDetails";
+import ProjectDetails from "../components/ProjectDetails/ProjectDetails";
 
 const ProjectDetailsView: React.FC<IProject> = () => {
     return (

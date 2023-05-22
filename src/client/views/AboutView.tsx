@@ -1,7 +1,7 @@
 import React from "react";
 
 //AboutView Component Import
-import About from './About'
+import About from '../components/About/About'
 
 const AboutView: React.FC<IAboutView> = () => {
     return (

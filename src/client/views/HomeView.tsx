@@ -1,7 +1,7 @@
 import React from "react";
 
 //Home Component Import
-import Home from './Home'
+import Home from '../components/Home/Home'
 
 const HomeView: React.FC<IHomeView> = () => {
     return (

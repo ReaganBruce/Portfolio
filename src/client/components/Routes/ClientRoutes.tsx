@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 //View Imports
-import ProjectDetailsView from "../components/ProjectDetails/ProjectDetailsView";
-import ProjectsView from "../components/Projects/ProjectsView";
-import AboutView from "../components/About/AboutView";
-import InterestsView from "../components/Interests/InterestsView";
-import HomeView from "../components/Home/HomeView";
+import ProjectDetailsView from "../../views/ProjectDetailsView";
+import ProjectsView from "../../views/ProjectsView";
+import AboutView from "../../views/AboutView";
+import InterestsView from "../../views/InterestsView";
+import HomeView from "../../views/HomeView";
 
 
 const ClientRoutes: React.FC<IClientRoutes> = () => {
