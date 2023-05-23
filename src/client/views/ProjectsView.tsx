@@ -6,7 +6,7 @@ import Projects from '../components/Projects/Projects'
 const ProjectsView: React.FC<IProjectsView> = () => {
     return (
         <>
-            <Projects />  
+            <Projects  />  
         </>
     )
 }
