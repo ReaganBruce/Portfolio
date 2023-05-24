@@ -1,18 +1,18 @@
-import express from 'express'
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import morgan from 'morgan';
-import path from 'path';
+import morgan from "morgan";
+import path from "path";
 
 //Config Import
-import { databaseConnection } from "./db/config";
-import config from './configs/config'
+import { databaseConnection } from "./configs/db";
+import config from "./configs/index";
 
 //Route Import
 import routes from "./routes/index";
 
 //Client Import
-import client from './configs/client.json'
+import client from "./configs/client.json";
 
 //Middleware Import
 import { notFoundHandler, globalErrorHandler } from "./middleware/errorHandler";
@@ -23,13 +23,15 @@ const app = express();
 //Database Connection
 databaseConnection();
 
-app.use(express.static('public'))
+app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan("dev"));
 app.use(routes);
-app.get(client.routes, (req, res) => res.sendFile(path.join(__dirname, '../public/index.html')))
+app.get(client.routes, (req, res) =>
+  res.sendFile(path.join(__dirname, "../public/index.html"))
+);
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
 

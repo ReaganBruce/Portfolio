@@ -9,7 +9,7 @@ import { Project } from "../models/projectsMod";
 const allProjects = async (req: Request, res: Response, next: NextFunction) => {
   const findProjects = await Project.find();
   try {
-      res.status(200).json({ message: "Success.", count: findProjects.length, projects: findProjects });
+      res.status(200).json({ message: "Success.", count: findProjects.length, Projects: findProjects });
   } catch (error) {
     next(error)
   }

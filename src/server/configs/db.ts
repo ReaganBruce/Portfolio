@@ -1,11 +1,10 @@
 import mongoose, { ConnectOptions } from "mongoose";
-import config from './config'
-
+import config from ".";
 
 const databaseConnection = async () => {
   const mongoUri = String(config.database.mongo);
   try {
-    await mongoose.connect(mongoUri, <ConnectOptions> {
+    await mongoose.connect(mongoUri, <ConnectOptions>{
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
@@ -13,6 +12,5 @@ const databaseConnection = async () => {
     console.log(err);
   }
 };
-
 
 export { databaseConnection };

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //View Imports
 import ProjectDetailsView from "../../views/ProjectDetailsView";
@@ -14,7 +14,7 @@ const ClientRoutes: React.FC<IClientRoutes> = () => {
     <>
       <Router>
         <Routes>
-          <Route path="/projects/:id" element={<ProjectDetailsView />}></Route>
+          <Route path="/projects/:projectId" element={<ProjectDetailsView />}></Route>
           <Route path="/projects" element={<ProjectsView />}></Route>
           <Route path="/about" element={<AboutView />}></Route>
           <Route path="/interests" element={<InterestsView />}></Route>

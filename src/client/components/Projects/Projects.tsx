@@ -1,56 +1,36 @@
 import React from "react";
-import { useQuery } from "react-query";
-import { fetchProjects } from "../../services/base";
+import { useProjectsQuery } from "../../services/queries";
 
 const Projects: React.FC<IProjects> = () => {
+  const { data, isError, isLoading } = useProjectsQuery();
 
-    const { data, isError, isLoading } = useQuery<IProjectBody>("projects", fetchProjects)
-
-    if (isLoading) {
-        return (
-            <>
-                <p>Loading.....</p>
-            </>
-        )
-    }
-
-    if (isError) {
-        return (
-            <>
-                <p>Error fetching projects</p>
-            </>
-        )
-    }
-
+  if (isLoading) {
     return (
-        <>
-          {data?.projects.map((project: IProjectBody) => (
-            <main>
-                <h1>{project.projectName}</h1>
-                    <h2>{project.projectDesc}</h2>
-                    <h3>{project.createdAt}</h3>
-            </main>
-          ))}
-        </>
-    )
-}
+      <>
+        <p>Loading.....</p>
+      </>
+    );
+  }
 
+  if (isError) {
+    return (
+      <>
+        <p>Error fetching projects</p>
+      </>
+    );
+  }
 
+  return (
+    <>
+      {data?.Projects.map((project) => (
+          <div key={project._id}>
+            <h1>{project.createdAt}</h1>
+          </div>
+      ))}
+    </>
+  );
+};
 
+interface IProjects {}
 
-interface IProjects {
-    createdAt?: string,
-    learnedInfo?: string,
-    projectDesc?: string,
-    projectImg?: Buffer,
-    projectName?: string,
-    softwareStack?: [String],
-    github?: string
-}
-
-//data structure is data.projects: [ { } ]
-interface IProjectBody extends IProjects {
-    projects: []
-}
-
-export default Projects
+export default Projects;
