@@ -7,7 +7,11 @@ const Projects: React.FC<IProjects> = () => {
   if (isLoading) {
     return (
       <>
-        <p>Loading.....</p>
+        <div className="flex h-screen justify-center items-center">
+                <div className="text-7xl text-center">
+                <progress className="progress w-56"></progress>
+                </div>
+           </div>
       </>
     );
   }
@@ -22,6 +26,7 @@ const Projects: React.FC<IProjects> = () => {
 
   return (
     <>
+
       <main className="card-compact w-full flex flex-row flex-wrap">
         {data?.Projects.map((project) => (
           <div key={`project-id-${project._id}`}>
