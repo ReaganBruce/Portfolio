@@ -20,7 +20,7 @@ const clientConfig = {
                     configFile: 'tsconfig.json'
                 }
             },
-            {
+            {   //this is confusing as fuck
                 test: /\.css$/,
                 use: [
                     'style-loader',

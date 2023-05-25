@@ -1,16 +1,16 @@
 import React from "react";
 
 //Projects Component Import
-import Projects from '../components/Projects/Projects'
+import Projects from "../components/Projects";
 
 const ProjectsView: React.FC<IProjectsView> = () => {
-    return (
-        <>
-            <Projects  />  
-        </>
-    )
-}
+  return (
+    <>
+      <Projects />
+    </>
+  );
+};
 
-interface IProjectsView { }
+interface IProjectsView {}
 
 export default ProjectsView;

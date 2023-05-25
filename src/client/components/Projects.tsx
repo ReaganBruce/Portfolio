@@ -1,5 +1,5 @@
 import React from "react";
-import { useProjectsQuery } from "../../services/queries";
+import { useProjectsQuery } from "../services/queries";
 
 const Projects: React.FC<IProjects> = () => {
   const { data, isError, isLoading } = useProjectsQuery();
@@ -22,10 +22,11 @@ const Projects: React.FC<IProjects> = () => {
 
   return (
     <>
-      {data?.Projects.map((project) => (
-        <div key={`project-id-${project._id}`}>
-          <section className="col-4 mb-4 p-3">
-              <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
+      <main className="card-compact w-full flex flex-row flex-wrap">
+        {data?.Projects.map((project) => (
+          <div key={`project-id-${project._id}`}>
+            <section className="col-4 p-3">
+              <div className="card w-96 bg-base-100 shadow-xl p-6 ml-5">
                 <div className="card-body">
                   <h1 className="card-title justify-center">
                     {project.projectName}
@@ -33,9 +34,10 @@ const Projects: React.FC<IProjects> = () => {
                   <p>{project.projectDesc}</p>
                 </div>
               </div>
-          </section>
-        </div>
-      ))}
+            </section>
+          </div>
+        ))}
+      </main>
     </>
   );
 };

@@ -3,7 +3,9 @@ import React from "react";
 const About: React.FC<IAbout> = () => {
     return (
         <>
-            <h1>HELLO FROM ABOUT</h1>
+            <div className="flex h-screen justify-center items-center">
+                <h1 className="text-7xl text-center">ABOUT</h1>
+           </div>
         </>
     )
 }

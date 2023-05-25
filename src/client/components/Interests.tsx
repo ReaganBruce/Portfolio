@@ -3,7 +3,9 @@ import React from "react";
 const Interests: React.FC<IInterests> = () => {
     return (
         <>
-            <h1>HELLO FROM Interests</h1>
+           <div className="flex h-screen justify-center items-center">
+                <h1 className="text-7xl text-center">INTERESTS</h1>
+           </div>
         </>
     )
 }
