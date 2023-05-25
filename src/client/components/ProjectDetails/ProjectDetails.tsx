@@ -5,37 +5,43 @@ import { useParams } from "react-router-dom";
 import { useProjectDetailsQuery } from "../../services/queries";
 
 const ProjectDetails: React.FC<IProjectDetails> = () => {
-    const { projectId } = useParams();
-    const { isLoading, data, isError } = useProjectDetailsQuery(projectId)
+  const { projectId } = useParams();
+  const { isLoading, data, isError } = useProjectDetailsQuery(
+    projectId as string
+  );
 
-
-    if (isLoading) {
-        return (
-            <>
-                <p>Loading.....</p>
-            </>
-        )
-    }
-
-    if (isError) {
-        return (
-            <>
-                <p>Error fetching projects</p>
-            </>
-        )
-    }
-
+  if (isLoading) {
     return (
-        <>
-            <div key={data?.Project?._id}>
-                <h1>{data?.Project?.projectName}</h1>
-                <h2>{data?.Project?.createdAt}</h2>
+      <>
+        <p>Loading.....</p>
+      </>
+    );
+  }
+
+  if (isError) {
+    return (
+      <>
+        <p>Error fetching projects</p>
+      </>
+    );
+  }
+
+  return (
+    <>
+        <main key={data?.Project._id}>
+            <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
+                <div className="card-body">
+                    <h1 className="card-title justify-center">{data?.Project.projectName}</h1>
+                </div>
             </div>
-        </>
-    )
-}
+        </main>
+    </>
+  );
+};
 
-interface IProjectDetails { }
-
+interface IProjectDetails {}
 
 export default ProjectDetails;
+
+
+

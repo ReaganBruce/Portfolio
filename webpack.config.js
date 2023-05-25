@@ -19,6 +19,14 @@ const clientConfig = {
                     context: path.resolve(__dirname, './src/client'),
                     configFile: 'tsconfig.json'
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    'postcss-loader'
+                ]
             }
         ]
     },

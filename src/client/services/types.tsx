@@ -5,7 +5,7 @@ export {};
 //No need for a wrapper as this response is just an object.
 export interface IProjectDetailsBody {
   Project: {
-    _id: number;
+    _id: string; //mongodb id is type string
     createdAt: string;
     learnedInfo: string;
     projectDesc: string;
@@ -17,14 +17,14 @@ export interface IProjectDetailsBody {
 }
 
 
-//wrapper needed as /api/projects is an array of objects.
-// data : { Projects: [ { } ] }
+//wrapper needed as /api/projects/ is an array of objects.
+// example: data : { Projects: [ { } ] }
 export interface GetProjectResponseWrapper extends IProjectsBody {
   Projects: Array<IProjectsBody>
 }
 
 interface IProjectsBody {
-      _id: number;
+      _id: string; //mongodb id is type string
       createdAt: string;
       learnedInfo?: string;
       projectDesc?: string;

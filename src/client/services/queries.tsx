@@ -8,7 +8,7 @@ const useProjectsQuery = () => {
     return useQuery<GetProjectResponseWrapper>("projects", fetchAllProjects);
 };
 
-const useProjectDetailsQuery = (projectId: any) => {
+const useProjectDetailsQuery = (projectId: string) => {
   return useQuery<IProjectDetailsBody>(["projectDetails", projectId], () =>
     fetchOneProject(projectId)
     

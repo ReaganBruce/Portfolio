@@ -7,7 +7,7 @@ const fetchAllProjects = async () => {
 };
 
 //localhost:3000/api/projects/:id
-const fetchOneProject = async (projectId: number) => {
+const fetchOneProject = async (projectId: string) => {
   const { data } = await axios.get(`/api/project/${projectId}`);
   return data;
 };
