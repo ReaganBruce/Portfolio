@@ -1,15 +1,21 @@
 import axios from "axios";
+import { IProjectDetailsBody } from "./types";
 
-//localhost:3000/api/projects/
+//GET: localhost:3000/api/projects/
 const fetchAllProjects = async () => {
   const { data } = await axios.get("/api/projects/");
   return data;
 };
 
-//localhost:3000/api/projects/:id
+//GET: localhost:3000/api/projects/:id
 const fetchOneProject = async (projectId: string) => {
   const { data } = await axios.get(`/api/project/${projectId}`);
   return data;
 };
 
-export { fetchOneProject, fetchAllProjects };
+//POST: localhost:3000/api/projects/
+const createProject = async (project: any) => {
+  return (await axios.post("/api/projects/", project)) as IProjectDetailsBody;
+};
+
+export { fetchOneProject, fetchAllProjects, createProject };

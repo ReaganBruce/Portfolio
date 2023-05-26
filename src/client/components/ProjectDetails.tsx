@@ -4,27 +4,17 @@ import { useParams } from "react-router-dom";
 //Query Import
 import { useProjectDetailsQuery } from "../services/queries";
 
+// Status Component Imports
+import IsLoading from "./status/IsLoading";
+import IsError from "./status/IsError";
+
 const ProjectDetails: React.FC<IProjectDetails> = () => {
   const { projectId } = useParams();
-  const { isLoading, data, isError } = useProjectDetailsQuery(
-    projectId as string
-  );
+  const { isLoading, data, isError, isFetching } = useProjectDetailsQuery(projectId as string);
 
-  if (isLoading) {
-    return (
-      <>
-        <p>Loading.....</p>
-      </>
-    );
-  }
+  if (isLoading || isFetching) () => { <IsLoading /> };
 
-  if (isError) {
-    return (
-      <>
-        <p>Error fetching projects</p>
-      </>
-    );
-  }
+  if (isError) () => { <IsError /> };
 
   return (
     <>
@@ -41,6 +31,6 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
   );
 };
 
-interface IProjectDetails {}
+interface IProjectDetails { }
 
 export default ProjectDetails;

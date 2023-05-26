@@ -1,16 +1,15 @@
 import React from "react";
 
-//AboutView Component Import
-import About from '../components/About'
-
 const AboutView: React.FC<IAboutView> = () => {
-    return (
-        <>
-            <About />
-        </>
-    )
-}
+  return (
+    <>
+      <div className="flex h-screen justify-center items-center">
+        <h1 className="text-7xl text-center">ABOUT</h1>
+      </div>
+    </>
+  );
+};
 
-interface IAboutView { }
+interface IAboutView {}
 
 export default AboutView;

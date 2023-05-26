@@ -1,32 +1,23 @@
 import React from "react";
+
+//Query Import
 import { useProjectsQuery } from "../services/queries";
 
+//Status Component Import
+import IsLoading from "./status/IsLoading";
+import IsError from "./status/IsError";
+
 const Projects: React.FC<IProjects> = () => {
-  const { data, isError, isLoading } = useProjectsQuery();
+  const { data, isError, isLoading, isFetching } = useProjectsQuery();
 
-  if (isLoading) {
-    return (
-      <>
-        <div className="flex h-screen justify-center items-center">
-                <div className="text-7xl text-center">
-                <progress className="progress w-56"></progress>
-                </div>
-           </div>
-      </>
-    );
-  }
+  if (isLoading || isFetching ) () => { <IsLoading /> };
 
-  if (isError) {
-    return (
-      <>
-        <p>Error fetching projects</p>
-      </>
-    );
-  }
+  if (isError) () => { <IsError /> }
+
+ 
 
   return (
     <>
-
       <main className="card-compact w-full flex flex-row flex-wrap">
         {data?.Projects.map((project) => (
           <div key={`project-id-${project._id}`}>

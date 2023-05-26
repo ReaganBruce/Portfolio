@@ -1,16 +1,16 @@
 import React from "react";
 
-//AboutView Component Import
-import Interests from '../components/Interests'
 
 const InterestsView: React.FC<IInterestsView> = () => {
-    return (
-        <>
-            <Interests />
-        </>
-    )
-}
+  return (
+    <>
+      <div className="flex h-screen justify-center items-center">
+        <h1 className="text-7xl text-center">INTERESTS</h1>
+      </div>
+    </>
+  );
+};
 
-interface IInterestsView { }
+interface IInterestsView {}
 
 export default InterestsView;

@@ -1,16 +1,15 @@
 import React from "react";
 
-//Home Component Import
-import Home from '../components/Home'
-
 const HomeView: React.FC<IHomeView> = () => {
-    return (
-        <>
-            <Home />
-        </>
-    )
-}
+  return (
+    <>
+      <div className="flex h-screen justify-center items-center">
+        <h1 className="text-7xl text-center">HOME</h1>
+      </div>
+    </>
+  );
+};
 
-interface IHomeView { }
+interface IHomeView {}
 
 export default HomeView;

@@ -3,6 +3,7 @@
         "/projects/:projectid",
         "/projects",
         "/interests",
-        "/about"
+        "/about",
+        "/admin"
     ]
 }

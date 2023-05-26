@@ -9,20 +9,22 @@ import AboutView from "../views/AboutView";
 import InterestsView from "../views/InterestsView";
 import HomeView from "../views/HomeView";
 
+//Soon to be Private Routes
+import Admin from "./Admin";
+
 const ClientRoutes: React.FC<IClientRoutes> = () => {
   return (
     <>
       <Router>
         <Nav />
         <Routes>
-          <Route
-            path="/projects/:projectId"
-            element={<ProjectDetailsView />}
-          ></Route>
+          <Route path="/projects/:projectId" element={<ProjectDetailsView />}></Route>
           <Route path="/projects" element={<ProjectsView />}></Route>
           <Route path="/about" element={<AboutView />}></Route>
           <Route path="/interests" element={<InterestsView />}></Route>
           <Route path="/" element={<HomeView />}></Route>
+          //Private
+          <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </Router>
     </>

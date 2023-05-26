@@ -1,12 +1,12 @@
 import React from "react";
 
-//ClientRoutes Import
-import ClientRoutes from "./components/ClientRoutes";
+//AppRoutes Import
+import AppRoutes from "./components/AppRoutes";
 
 const App = () => {
   return (
     <>
-      <ClientRoutes />
+      <AppRoutes />
     </>
   );
 };
