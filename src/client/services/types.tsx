@@ -19,11 +19,11 @@ export interface IProjectDetailsBody {
 
 //wrapper needed as /api/projects/ is an array of objects.
 // example: data : { Projects: [ { } ] }
-export interface GetProjectResponseWrapper extends IProjectsBody {
-  Projects: Array<IProjectsBody>
+export interface GetProjectResponseWrapper extends IProjectBody {
+  Projects: Array<IProjectBody>
 }
 
-interface IProjectsBody {
+interface IProjectBody {
       _id: string; //mongodb id is type string
       createdAt: string;
       learnedInfo?: string;

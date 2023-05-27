@@ -12,9 +12,21 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
   const { projectId } = useParams();
   const { isLoading, data, isError, isFetching } = useProjectDetailsQuery(projectId as string);
 
-  if (isLoading || isFetching) () => { <IsLoading /> };
+  if (isLoading || isFetching) {
+    return (
+      <>
+        <IsLoading />
+      </>
+    );
+  }
 
-  if (isError) () => { <IsError /> };
+  if (isError) {
+    return (
+      <>
+        <IsError />
+      </>
+    );
+  }
 
   return (
     <>

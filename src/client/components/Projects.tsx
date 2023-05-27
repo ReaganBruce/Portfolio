@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 //Query Import
 import { useProjectsQuery } from "../services/queries";
@@ -10,15 +11,25 @@ import IsError from "./status/IsError";
 const Projects: React.FC<IProjects> = () => {
   const { data, isError, isLoading, isFetching } = useProjectsQuery();
 
-  if (isLoading || isFetching ) () => { <IsLoading /> };
+  if (isLoading || isFetching) {
+    return (
+      <>
+        <IsLoading />
+      </>
+    );
+  }
 
-  if (isError) () => { <IsError /> }
-
- 
+  if (isError) {
+    return (
+      <>
+        <IsError />
+      </>
+    );
+  }
 
   return (
     <>
-      <main className="card-compact w-full flex flex-row flex-wrap">
+      <main className="card-compact h-screen justify-center w-full flex flex-row flex-wrap text-center">
         {data?.Projects.map((project) => (
           <div key={`project-id-${project._id}`}>
             <section className="col-4 p-3">
@@ -28,6 +39,12 @@ const Projects: React.FC<IProjects> = () => {
                     {project.projectName}
                   </h1>
                   <p>{project.projectDesc}</p>
+                  <Link
+                    to={`/projects/${project._id}`}
+                    className="card-actions justify-end"
+                  >
+                    <button className="btn btn-primary">Details</button>
+                  </Link>
                 </div>
               </div>
             </section>
