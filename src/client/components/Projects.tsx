@@ -14,7 +14,6 @@ const Projects: React.FC<IProjects> = () => {
     data: projectData,
     isError,
     isLoading,
-    isFetching,
   } = useProjectsQuery();
 
   if (isError) {
@@ -27,7 +26,7 @@ const Projects: React.FC<IProjects> = () => {
 
   return (
     <>
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <>
           <IsLoading />
         </>

@@ -1,21 +1,25 @@
 import { useMutation, useQuery } from "react-query";
-import { IProjectDetailsBody, GetProjectResponseWrapper } from "./types";
 
 //Base Imports
-import { fetchOneProject, fetchAllProjects, createProject } from "./base";
+import { fetchOneProject, fetchAllProjects, createProject, deleteProject } from "./base";
 
 const useProjectsQuery = () => {
-  return useQuery<GetProjectResponseWrapper>("projects", fetchAllProjects);
+  return useQuery("projects", fetchAllProjects);
 };
 
 const useProjectDetailsQuery = (projectId: string) => {
-  return useQuery<IProjectDetailsBody>(["projectDetails", projectId], () =>
+  return useQuery(["projectDetails", projectId], () =>
     fetchOneProject(projectId)
   );
 };
 
-const useCreateProject = () => {
+const useCreateProjectQuery = () => {
   return useMutation(createProject);
 };
 
-export { useProjectsQuery, useProjectDetailsQuery, useCreateProject };
+
+const useRemoveProjectQuery = (projectId: string) => {
+  return useMutation(deleteProject)
+}
+
+export { useProjectsQuery, useProjectDetailsQuery, useCreateProjectQuery, useRemoveProjectQuery };

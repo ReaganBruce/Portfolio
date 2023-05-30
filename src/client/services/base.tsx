@@ -1,10 +1,10 @@
 import axios from "axios";
-import { IProjectDetailsBody } from "./types";
+import { GetProjectResponseWrapper, IProjectDetailsBody } from "./types";
 
 //GET: localhost:3000/api/projects/
 const fetchAllProjects = async () => {
   try {
-    const { data } = await axios.get("/api/projects/");
+    const { data } = await axios.get<GetProjectResponseWrapper>("/api/projects/");
     return data;
   } catch (error) {
     throw error
@@ -14,7 +14,7 @@ const fetchAllProjects = async () => {
 //GET: localhost:3000/api/projects/:id
 const fetchOneProject = async (projectId: string) => {
   try {
-    const { data } = await axios.get(`/api/project/${projectId}`);
+    const { data } = await axios.get<IProjectDetailsBody>(`/api/project/${projectId}`);
     return data;
   } catch (error) {
     throw error
@@ -24,11 +24,21 @@ const fetchOneProject = async (projectId: string) => {
 //POST: localhost:3000/api/projects/
 const createProject = async (project: IProjectDetailsBody) => {
   try {
-    const { data } = await axios.post("/api/projects/", project);
+    const { data } = await axios.post<IProjectDetailsBody>("/api/projects/", project);
     return data;
   } catch (error) {
     throw error
   }
 };
 
-export { fetchOneProject, fetchAllProjects, createProject };
+//DELETE: localhost:3000/api/projects/:id
+const deleteProject = async (projectId: string) => {
+  try {
+    const response = await axios.delete<IProjectDetailsBody>(`/api/project/${projectId}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export { fetchOneProject, fetchAllProjects, createProject, deleteProject };

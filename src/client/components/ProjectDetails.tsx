@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
 //Query Import
-import { useProjectDetailsQuery } from "../services/queries";
+import {
+  useProjectDetailsQuery,
+  useRemoveProjectQuery,
+} from "../services/queries";
 
 //Component Imports
 import IsLoading from "./status/IsLoading";
@@ -15,8 +18,13 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
     data: projectDetails,
     isError,
     isLoading,
-    isFetching,
   } = useProjectDetailsQuery(projectId as string);
+
+  const { mutate: removeProjectBody } = useRemoveProjectQuery(
+    projectId as string
+  );
+
+  removeProjectBody;
 
   if (isError) {
     return (
@@ -28,7 +36,7 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
 
   return (
     <>
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <>
           <IsLoading />
         </>

@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 
 //Query Imports
-import { useCreateProject } from "../services/queries";
+import { useCreateProjectQuery } from "../services/queries";
 
 const Admin: React.FC<IAdmin> = () => {
   const [projectName, setProjectName] = useState("");
   const [projectImg, setProjectImg] = useState<File | null>(null);
   const [projectDesc, setProjectDesc] = useState("");
 
-  const { mutate: createNewProject } = useCreateProject();
+  const { mutate: createNewProject } = useCreateProjectQuery();
 
 
   const handleSubmitProject = () => {
     const formData = new FormData();
-    formData.append("projectFileUpload", projectImg as File);
+    formData.append("projectFileUpload", projectImg as File); 
     formData.append("projectName", projectName);
     formData.append("projectDesc", projectDesc);
 
+    //lazy typing ¯\_(ツ)_/¯
     createNewProject(formData as any);
   };
 
