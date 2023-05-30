@@ -9,9 +9,9 @@ export interface IProjectDetailsBody {
     createdAt: string;
     learnedInfo: string;
     projectDesc: string;
-    projectImg: Buffer;
+    projectImg: Uint8Array | any;
     projectName: string;
-    softwareStack: [String];
+    softwareStack: String[];
     github: string;
   };
 }
@@ -28,9 +28,9 @@ interface IProjectBody {
       createdAt: string;
       learnedInfo?: string;
       projectDesc?: string;
-      projectImg: Buffer;
+      projectImg: Uint8Array | any;
       projectName: string;
-      softwareStack?: [String];
+      softwareStack?: string[];
       github?: string;
 }
 

@@ -4,7 +4,7 @@ const uploadFile = multer({
   limits: {
     fileSize: 10000000,
   },
-  fileFilter(req, file, cb) {
+  fileFilter(req, file: any, cb) {
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) { // regex file extension validation
       return cb(new Error("Image extension not satisfied."));
     }

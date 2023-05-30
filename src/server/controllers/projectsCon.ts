@@ -34,16 +34,16 @@ const singleProject = async (req: Request, res: Response, next: NextFunction) =>
 
 const createProject = async (req: Request, res: Response, next: NextFunction) => {
   const projectBody = req.body
-  const projectImage = req.file?.buffer
+  const projectImg = req.file?.buffer
   const projectData = await Project.create({
     projectName: projectBody.projectName,
-    projectImg: projectImage,
+    projectImg: projectImg,
     projectDesc: projectBody.projectDesc,
     softwareStack: projectBody.softwareStack,
     learnedInfo: projectBody.learnedInfo,
     github: projectBody.github
   });
-
+  await projectData.save()
   try {
     res.status(201).json({ message: `${req.body.projectName} created.`, project: projectData });
   } catch (error) {

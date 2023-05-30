@@ -27,11 +27,11 @@ const ProjectSchema: Schema = new Schema({
   },
   softwareStack: {
     type: [String],
-    required: true,
+    required: false,
   },
   learnedInfo: {
     type: String,
-    required: true,
+    required: false,
   },
   github: {
     type: String,

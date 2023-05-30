@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Buffer } from "buffer";
 
 //Query Import
 import { useProjectsQuery } from "../services/queries";
@@ -39,6 +40,9 @@ const Projects: React.FC<IProjects> = () => {
                     {project.projectName}
                   </h1>
                   <p>{project.projectDesc}</p>
+                  <img src={`data:image/png;base64,${Buffer.from(new Uint8Array(project.projectImg)).toString("base64")}`}
+        alt="Project Image"
+      />
                   <Link
                     to={`/projects/${project._id}`}
                     className="card-actions justify-end"

@@ -17,7 +17,7 @@ const clientConfig = {
                 exclude: /node_modules/,
                 options: {
                     context: path.resolve(__dirname, './src/client'),
-                    configFile: 'tsconfig.json'
+                    configFile: 'tsconfig.json',
                 }
             },
             {   //this is confusing as fuck
@@ -27,8 +27,8 @@ const clientConfig = {
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     'postcss-loader'
                 ]
-            }
-        ]
+            },
+        ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { ReactEventHandler } from "react";
 import { useParams } from "react-router-dom";
+import { Buffer } from "buffer";
 
 //Query Import
 import { useProjectDetailsQuery } from "../services/queries";
@@ -9,11 +10,14 @@ import IsLoading from "./status/IsLoading";
 import IsError from "./status/IsError";
 
 const ProjectDetails: React.FC<IProjectDetails> = () => {
-  const { projectId } = useParams();
-  const { isLoading, data, isError, isFetching } = useProjectDetailsQuery(projectId as string);
-
-  if (isLoading || isFetching) {
-    return (
+  const { projectId } = useParams()
+  const { isLoading, data, isError, isFetching } = useProjectDetailsQuery(projectId as string)
+  const processedImage = new Uint8Array(data?.Project.projectImg.data);
+ 
+ 
+    
+    if (isLoading || isFetching) {
+      return (
       <>
         <IsLoading />
       </>
@@ -36,6 +40,9 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
             <h1 className="card-title justify-center">
               {data?.Project.projectName}
             </h1>
+            <img src={`data:image/png;base64,${Buffer.from(processedImage).toString("base64")}`}
+        alt="Project Image"
+      />
           </div>
         </div>
       </main>
@@ -43,6 +50,6 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
   );
 };
 
-interface IProjectDetails { }
+interface IProjectDetails {}
 
 export default ProjectDetails;
