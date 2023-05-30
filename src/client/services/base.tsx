@@ -15,7 +15,7 @@ const fetchOneProject = async (projectId: string) => {
 
 //POST: localhost:3000/api/projects/
 const createProject = async (project: IProjectDetailsBody) => {
-  return (await axios.post("/api/projects/", project))
+  return await axios.post("/api/projects/", project);
 };
 
 export { fetchOneProject, fetchAllProjects, createProject };

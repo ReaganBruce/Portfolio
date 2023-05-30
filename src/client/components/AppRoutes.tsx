@@ -23,7 +23,7 @@ const ClientRoutes: React.FC<IClientRoutes> = () => {
           <Route path="/about" element={<AboutView />}></Route>
           <Route path="/interests" element={<InterestsView />}></Route>
           <Route path="/" element={<HomeView />}></Route>
-          //Private
+          //Soon to be private
           <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </Router>

@@ -1,24 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Buffer } from "buffer";
 
 //Query Import
 import { useProjectsQuery } from "../services/queries";
 
-//Status Component Import
+//Component Imports
 import IsLoading from "./status/IsLoading";
 import IsError from "./status/IsError";
+import BufferImage from "./BufferImage";
 
 const Projects: React.FC<IProjects> = () => {
-  const { data, isError, isLoading, isFetching } = useProjectsQuery();
-
-  if (isLoading || isFetching) {
-    return (
-      <>
-        <IsLoading />
-      </>
-    );
-  }
+  const {
+    data: projectData,
+    isError,
+    isLoading,
+    isFetching,
+  } = useProjectsQuery();
 
   if (isError) {
     return (
@@ -30,31 +27,37 @@ const Projects: React.FC<IProjects> = () => {
 
   return (
     <>
-      <main className="card-compact h-screen justify-center w-full flex flex-row flex-wrap text-center">
-        {data?.Projects.map((project) => (
-          <div key={`project-id-${project._id}`}>
-            <section className="col-4 p-3">
-              <div className="card w-96 bg-base-100 shadow-xl p-6 ml-5">
-                <div className="card-body">
-                  <h1 className="card-title justify-center">
-                    {project.projectName}
-                  </h1>
-                  <p>{project.projectDesc}</p>
-                  <img src={`data:image/png;base64,${Buffer.from(new Uint8Array(project.projectImg)).toString("base64")}`}
-        alt="Project Image"
-      />
-                  <Link
-                    to={`/projects/${project._id}`}
-                    className="card-actions justify-end"
-                  >
-                    <button className="btn btn-primary">Details</button>
-                  </Link>
+      {isLoading || isFetching ? (
+        <>
+          <IsLoading />
+        </>
+      ) : (
+        <main className="card-compact h-screen justify-center w-full flex flex-row flex-wrap text-center">
+          {projectData?.Projects.map((project) => (
+            <div key={`project-id-${project._id}`}>
+              <section className="col-4 p-3">
+                <div className="card w-96 bg-base-100 shadow-xl p-6 ml-5">
+                  <div className="card-body">
+                    <h1 className="card-title justify-center">
+                      {project.projectName}
+                    </h1>
+                    <p>{project.projectDesc}</p>
+                    <BufferImage
+                      imageSrc={project.projectImg.data as Uint8Array}
+                    />
+                    <Link
+                      to={`/projects/${project._id}`}
+                      className="card-actions justify-center"
+                    >
+                      <button className="btn btn-primary">Details</button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </section>
-          </div>
-        ))}
-      </main>
+              </section>
+            </div>
+          ))}
+        </main>
+      )}
     </>
   );
 };

@@ -1,28 +1,22 @@
-import React, { ReactEventHandler } from "react";
-import { useParams } from "react-router-dom";
-import { Buffer } from "buffer";
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 
 //Query Import
 import { useProjectDetailsQuery } from "../services/queries";
 
-// Status Component Imports
+//Component Imports
 import IsLoading from "./status/IsLoading";
 import IsError from "./status/IsError";
+import BufferImage from "./BufferImage";
 
 const ProjectDetails: React.FC<IProjectDetails> = () => {
-  const { projectId } = useParams()
-  const { isLoading, data, isError, isFetching } = useProjectDetailsQuery(projectId as string)
-  const processedImage = new Uint8Array(data?.Project.projectImg.data);
- 
- 
-    
-    if (isLoading || isFetching) {
-      return (
-      <>
-        <IsLoading />
-      </>
-    );
-  }
+  const { projectId } = useParams();
+  const {
+    data: projectDetails,
+    isError,
+    isLoading,
+    isFetching,
+  } = useProjectDetailsQuery(projectId as string);
 
   if (isError) {
     return (
@@ -34,18 +28,27 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
 
   return (
     <>
-      <main key={data?.Project._id}>
-        <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
-          <div className="card-body">
-            <h1 className="card-title justify-center">
-              {data?.Project.projectName}
-            </h1>
-            <img src={`data:image/png;base64,${Buffer.from(processedImage).toString("base64")}`}
-        alt="Project Image"
-      />
+      {isLoading || isFetching ? (
+        <>
+          <IsLoading />
+        </>
+      ) : (
+        <main key={projectDetails?.Project._id}>
+          <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
+            <div className="card-body">
+              <h1 className="card-title justify-center">
+                {projectDetails?.Project.projectName}
+              </h1>
+              <BufferImage
+                imageSrc={projectDetails?.Project.projectImg.data as Uint8Array}
+              />
+              <Link to={`/projects/`} className="card-actions justify-center">
+                <button className="btn btn-primary">Go Back</button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      )}
     </>
   );
 };
