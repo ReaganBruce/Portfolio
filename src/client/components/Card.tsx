@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 //Import BufferImage Component
 import BufferImage from "./BufferImage";
 
-const Card: React.FC<ICard> = ({ projectBody }) => {
+const Card: React.FC<ICard> = ({ projectData }) => {
   return (
     <>
       <main className="card-compact h-screen justify-center w-full flex flex-row flex-wrap text-center">
-        {projectBody?.map((project) => (
-          <div key={`project-id-${project.id}`}>
+        {projectData?.map((project) => (
+          <div key={`project-id-${project._id}`}>
             <section className="col-4 p-3">
               <div className="card w-96 bg-base-100 shadow-xl p-6 ml-5">
                 <div className="card-body">
@@ -17,9 +17,9 @@ const Card: React.FC<ICard> = ({ projectBody }) => {
                     {project.projectName}
                   </h1>
                   <p>{project.projectDesc}</p>
-                  <BufferImage imageSrc={project.projectImg as Buffer} />
+                  <BufferImage imageSrc={project.projectImg.data} />
                   <Link
-                    to={`/projects/${project.id}`}
+                    to={`/projects/${project._id}`}
                     className="card-actions justify-center"
                   >
                     <button className="btn btn-primary">Details</button>
@@ -35,11 +35,13 @@ const Card: React.FC<ICard> = ({ projectBody }) => {
 };
 
 interface ICard {
-  projectBody: Array<{
-    id: string;
+  projectData: Array<{
+    _id: string;
     projectName: string;
     projectDesc: string;
-    projectImg: Buffer;
+    projectImg: {
+      data: Buffer;
+    };
   }>;
 }
 export default Card;

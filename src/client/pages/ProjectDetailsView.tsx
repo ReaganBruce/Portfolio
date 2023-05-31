@@ -24,9 +24,9 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
     projectId as string
   );
 
-  // const handleDelete = (projectId: string) => {
-  //   removeProjectBody(projectId)
-  // }
+  const handleDelete = (projectId: string) => {
+    removeProjectBody(projectId)
+  }
 
   if (isLoading) {
     return <IsLoading />;
@@ -48,7 +48,7 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
               <BufferImage
                 imageSrc={projectDetails?.Project.projectImg.data as Buffer}
               />
-              {/* <button onClick={() => handleDelete(projectDetails?.Project._id as string)}>Delete</button> */}
+              <button className="btn btn-secondary" onClick={() => handleDelete(projectDetails?.Project._id as string)}>Delete</button>
               <Link to={`/projects/`} className="card-actions justify-center">
                 <button className="btn btn-primary">Go Back</button>
               </Link>
