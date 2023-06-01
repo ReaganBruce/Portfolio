@@ -1,9 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from 'mongoose';
+import { File } from "multer-s3";
 
 
 //MongoDB Schema Import
 import { Project } from "../models/projectsMod";
+
 
 
 const allProjects = async (req: Request, res: Response, next: NextFunction) => {
@@ -32,9 +34,9 @@ const singleProject = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
-const createProject = async (req: Request, res: Response, next: NextFunction) => {
+const createProject = async (req: HandleFileRequest, res: Response, next: NextFunction) => {
   const projectBody = req.body
-  const projectImg = req.file?.buffer
+  const projectImg = req.file?.location
   const projectData = await Project.create({
     projectName: projectBody.projectName,
     projectImg: projectImg,
@@ -81,3 +83,14 @@ export default {
   updateProject,
   deleteProject,
 };
+
+
+interface CustomFile extends File {
+  location?: string;
+}
+
+interface HandleFileRequest extends Request {
+ file?: CustomFile;
+ fieldname?: string
+}
+

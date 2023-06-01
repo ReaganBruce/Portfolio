@@ -4,7 +4,7 @@ import { Router } from "express";
 import projectsController from "../../controllers/projectsCon";
 
 //Multer Import
-import { uploadFile } from "../../utils/fileUpload";
+import { uploadProjectImage } from "../../utils/fileUpload";
 
 const router = Router();
 
@@ -15,7 +15,7 @@ router.get("/projects/", projectsController.allProjects);
 router.get("/project/:id", projectsController.singleProject);
 
 //POST: localhost:3000/api/projects
-router.post("/projects/", uploadFile.single('projectFileUpload'), projectsController.createProject);
+router.post("/projects/", uploadProjectImage.single('projectFileUpload'), projectsController.createProject);
 
 //UPDATE: localhost:3000/api/projects/:id
 router.put("/projects/:id", projectsController.updateProject);

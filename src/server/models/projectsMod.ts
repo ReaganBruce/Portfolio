@@ -16,8 +16,7 @@ const ProjectSchema: Schema = new Schema({
     required: true,
   },
   projectImg: {
-    type: Buffer,
-    contentType: String,
+    type: String,
     required: true
   },
   projectDesc: {

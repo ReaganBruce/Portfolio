@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-//Import BufferImage Component
-import BufferImage from "./BufferImage";
-
 const Card: React.FC<ICard> = ({ projectData }) => {
   return (
     <>
@@ -17,7 +14,7 @@ const Card: React.FC<ICard> = ({ projectData }) => {
                     {project.projectName}
                   </h1>
                   <p>{project.projectDesc}</p>
-                  <BufferImage imageSrc={project.projectImg.data} />
+                   <img src={`${project.projectImg}`} key={`project-image-${project._id}`}></img>
                   <Link
                     to={`/projects/${project._id}`}
                     className="card-actions justify-center"

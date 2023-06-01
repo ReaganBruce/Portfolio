@@ -16,6 +16,7 @@ export default {
     },
     a3: {
         access: process.env.ACCESS_KEY,
-        secret: process.env.SECRET_ACCESS_KEY
+        secret: process.env.SECRET_ACCESS_KEY,
+        bucket: process.env.BUCKET
     }
 };
