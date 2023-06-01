@@ -13,5 +13,9 @@ export default {
 
         mongo: process.env.MONGO_URI
     
+    },
+    a3: {
+        access: process.env.ACCESS_KEY,
+        secret: process.env.SECRET_ACCESS_KEY
     }
 };

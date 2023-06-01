@@ -1,4 +1,6 @@
 import multer from "multer";
+import { s3 } from '../configs/aws'
+
 
 const uploadFile = multer({
   limits: {
