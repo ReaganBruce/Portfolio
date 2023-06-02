@@ -19,6 +19,8 @@ const Projects: React.FC<IProjects> = () => {
     return <IsError />;
   }
 
+
+  //any is bad, I know. this will be fixed :)
   return (
     <>
        <Card projectData={projectData?.Projects as any} />
