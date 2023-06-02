@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from 'mongoose';
-import { File } from "multer-s3";
+
 
 
 //MongoDB Schema Import
@@ -34,7 +34,7 @@ const singleProject = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
-const createProject = async (req: HandleFileRequest, res: Response, next: NextFunction) => {
+const createProject = async (req: Request, res: Response, next: NextFunction) => {
   const projectBody = req.body
   const projectImg = req.file?.location
   const projectData = await Project.create({
@@ -84,13 +84,4 @@ export default {
   deleteProject,
 };
 
-
-interface CustomFile extends File {
-  location?: string;
-}
-
-interface HandleFileRequest extends Request {
- file?: CustomFile;
- fieldname?: string
-}
 
