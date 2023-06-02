@@ -10,7 +10,7 @@ const fileFilter = (req: Express.Request, file: Express.MulterS3.File, cb: FileF
   cb(null, true);
 };
 
-const multerS3Config =multerS3({
+const multerS3Config = multerS3({
   s3: s3Config,
   acl: "public-read",
   bucket: String(process.env.BUCKET),

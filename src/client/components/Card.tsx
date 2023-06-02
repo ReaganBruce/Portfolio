@@ -36,9 +36,7 @@ interface ICard {
     _id: string;
     projectName: string;
     projectDesc: string;
-    projectImg: {
-      data: Buffer;
-    };
+    projectImg: string;
   }>;
 }
 export default Card;

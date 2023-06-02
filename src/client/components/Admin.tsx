@@ -17,7 +17,7 @@ const Admin: React.FC<IAdmin> = () => {
     formData.append("projectName", projectName);
     formData.append("projectDesc", projectDesc);
 
-    //lazy typing ¯\_(ツ)_/¯
+    //lazy typing ¯\_(ツ)_/¯ Will fix this eventually once I understand Typescript better lol
     createNewProject(formData as any);
   };
 
