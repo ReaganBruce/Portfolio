@@ -21,7 +21,7 @@ const Projects: React.FC<IProjects> = () => {
 
   return (
     <>
-       <Card projectData={projectData?.Projects as any} /> */I know his is not good LOL/*
+       <Card projectData={projectData?.Projects as any} />
     </>
   );
 };
