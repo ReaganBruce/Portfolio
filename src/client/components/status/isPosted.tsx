@@ -1,28 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 
-const IsPosted: React.FC<IisPosted> = ({ projectName, show }) => {
-  if (!show) {
+const IsPosted: React.FC<IisPosted> = ({ projectName, showModal }) => {
+  const modalRoot = document.getElementById("modal-root")!;
+
+  if (!showModal) {
     return null;
   }
 
-  return (
+  return ReactDOM.createPortal(
     <>
-      <dialog id="my_modal_2" className="modal">
-        <form method="dialog" className="modal-box">
-          <h3 className="font-bold text-lg">Success</h3>
-          <p className="py-4">Project: {projectName} successfully created!</p>
-        </form>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
-    </>
+      <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
+        <div className="bg-white p-2 rounded w-72">
+          <h1 className="font-semibold text-center text-xl text-gray-700">
+            Project: {projectName} successfully created!
+          </h1>
+        </div>
+      </div>
+    </>,
+    modalRoot
   );
 };
 
 interface IisPosted {
   projectName?: string;
-  show: boolean;
+  showModal: boolean;
 }
 
 export default IsPosted;

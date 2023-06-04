@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 //Query Import
 import {
@@ -12,6 +12,7 @@ import IsLoading from "../components/status/IsLoading";
 import IsError from "../components/status/IsError";
 
 const ProjectDetails: React.FC<IProjectDetails> = () => {
+  const navigate = useNavigate();
   const { projectId } = useParams();
   const {
     data: projectDetails,
@@ -25,6 +26,7 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
 
   const handleDelete = (projectId: string) => {
     removeProjectBody(projectId);
+    navigate(-1);
   };
 
   if (isLoading) {
@@ -43,10 +45,7 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
             <h1 className="card-title justify-center">
               {projectDetails?.Project.projectName}
             </h1>
-            <img
-              src={`${projectDetails?.Project.projectImg}`}
-              key={`project-image-${projectDetails?.Project._id}`}
-            ></img>
+            <img src={`${projectDetails?.Project.projectImg}`}></img>
             <button
               className="btn btn-secondary"
               onClick={() =>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { GetProjectResponseWrapper, IProjectDetailsBody } from "./types";
 
+
 //GET: localhost:3000/api/projects/
 const fetchAllProjects = async () => {
   try {

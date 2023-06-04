@@ -14,7 +14,9 @@ const Card: React.FC<ICard> = ({ projectData }) => {
                     {project.projectName}
                   </h1>
                   <p>{project.projectDesc}</p>
-                   <img src={`${project.projectImg}`} key={`project-image-${project._id}`}></img>
+                  <img
+                    src={`${project.projectImg}`}
+                  ></img>
                   <Link
                     to={`/projects/${project._id}`}
                     className="card-actions justify-center"
