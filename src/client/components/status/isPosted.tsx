@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom'
 
-const IsPosted: React.FC<IisPosted> = ({ projectName, projectId, showModal }) => {
+const IsPosted: React.FC<IisPosted> = ({ projectName, showModal }) => {
   const modalRoot = document.getElementById("modal-root")!;
 
   if (!showModal) {
@@ -29,9 +29,7 @@ const IsPosted: React.FC<IisPosted> = ({ projectName, projectId, showModal }) =>
 
 interface IisPosted {
   projectName?: string;
-  projectId?: string;
   showModal: boolean;
-
 }
 
 export default IsPosted;
