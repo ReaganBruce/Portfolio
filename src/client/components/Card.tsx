@@ -14,9 +14,7 @@ const Card: React.FC<ICard> = ({ projectData }) => {
                     {project.projectName}
                   </h1>
                   <p>{project.projectDesc}</p>
-                  <img
-                    src={`${project.projectImg}`}
-                  ></img>
+                  <img src={`${project.projectImg}`}></img>
                   <Link
                     to={`/projects/${project._id}`}
                     className="card-actions justify-center"
@@ -34,11 +32,11 @@ const Card: React.FC<ICard> = ({ projectData }) => {
 };
 
 interface ICard {
-  projectData: Array<{
-    _id: string;
-    projectName: string;
-    projectDesc: string;
-    projectImg: string;
+  projectData?: Array<{
+    _id?: string;
+    projectName?: string;
+    projectDesc?: string;
+    projectImg?: string;
   }>;
 }
 export default Card;

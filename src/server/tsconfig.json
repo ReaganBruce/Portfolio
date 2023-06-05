@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "lib": ["ES2017"],
     "typeRoots": ["./src/server/types"],
-    "strict": true
+    "strict": false
   },
   "include": ["."]
 }
