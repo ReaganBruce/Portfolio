@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
 //Query Imports
 import { useCreateProjectQuery } from "../services/queries";
@@ -7,10 +8,11 @@ import { useCreateProjectQuery } from "../services/queries";
 import IsPosted from "./status/isPosted";
 
 const Admin: React.FC<IAdmin> = () => {
+
   const [projectName, setProjectName] = useState("");
   const [projectImg, setProjectImg] = useState<File | null>(null);
   const [projectDesc, setProjectDesc] = useState("");
-  const [showModel, setShowModel] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const { mutate: createNewProject } = useCreateProjectQuery();
 
@@ -27,7 +29,8 @@ const Admin: React.FC<IAdmin> = () => {
     formData.append("projectName", projectName);
     formData.append("projectDesc", projectDesc);
     createNewProject(formData as any);
-    setShowModel(true);
+    e.preventDefault();
+    setShowModal(true);
   };
 
   return (
@@ -72,13 +75,16 @@ const Admin: React.FC<IAdmin> = () => {
               className="textarea textarea-bordered textarea-lg w-full max-w-xs"
               onChange={(e) => setProjectDesc(e.target.value)}
             ></textarea>
-            <IsPosted projectName={projectName} showModal={showModel} />
             <button
-              className="btn btn-primary mt-5"
+              className="btn btn-primary mt-8"
               onClick={handleSubmitProject}
             >
               Create Test Project
             </button>
+            <IsPosted
+              projectName={projectName}
+              showModal={showModal}
+            />
           </div>
         </section>
       </form>

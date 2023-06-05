@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
 //Query Import
@@ -10,8 +10,11 @@ import {
 //Component Imports
 import IsLoading from "../components/status/IsLoading";
 import IsError from "../components/status/IsError";
+import IsDeleted from "../components/status/IsDeleted";
 
 const ProjectDetails: React.FC<IProjectDetails> = () => {
+  const [modal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
   const { projectId } = useParams();
   const {
@@ -26,7 +29,10 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
 
   const handleDelete = (projectId: string) => {
     removeProjectBody(projectId);
-    navigate(-1);
+    setShowModal(true);
+    setTimeout(() => {
+      navigate(-1);
+    }, 1500)
   };
 
   if (isLoading) {
@@ -39,7 +45,7 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
 
   return (
     <>
-      <main key={projectDetails?.Project._id}>
+      <main key={`project-key-${projectDetails?.Project._id}`}>
         <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
           <div className="card-body">
             <h1 className="card-title justify-center">
@@ -54,6 +60,10 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
             >
               Delete
             </button>
+            <IsDeleted
+              projectName={projectDetails?.Project.projectName as any}
+              showModal={modal}
+            />
             <Link to={`/projects/`} className="card-actions justify-center">
               <button className="btn btn-primary">Go Back</button>
             </Link>
