@@ -5,15 +5,13 @@ import mongoose from "mongoose";
 import { Project } from "../models/projectsMod";
 
 const allProjects = async (req: Request, res: Response, next: NextFunction) => {
-  const findProjects = await Project.find();
   try {
-    res
-      .status(200)
-      .json({
-        message: "Success.",
-        count: findProjects.length,
-        Projects: findProjects,
-      });
+    const findProjects = await Project.find();
+    res.status(200).json({
+      message: "Success.",
+      count: findProjects.length,
+      Projects: findProjects,
+    });
   } catch (error) {
     next(error);
   }
@@ -24,8 +22,8 @@ const singleProject = async (
   res: Response,
   next: NextFunction
 ) => {
-  const projectId = req.params.id;
   try {
+    const projectId = req.params.id;
     if (mongoose.Types.ObjectId.isValid(projectId)) {
       //Validating BSON ObjectID
       const findProject = await Project.findOne({ _id: projectId });
@@ -46,24 +44,24 @@ const createProject = async (
   res: Response,
   next: NextFunction
 ) => {
-  const projectBody = req.body;
-  const projectImg = req.file?.location;
-  const projectData = await Project.create({
-    projectName: projectBody.projectName,
-    projectImg: projectImg,
-    projectDesc: projectBody.projectDesc,
-    softwareStack: projectBody.softwareStack,
-    learnedInfo: projectBody.learnedInfo,
-    github: projectBody.github,
-  });
-  await projectData.save();
   try {
-    res
-      .status(201)
-      .json({
-        message: `${req.body.projectName} created.`,
-        project: projectData,
-      });
+    const { projectName, projectDesc, softwareStack, learnedInfo, github } =
+      req.body;
+    const projectImg = req.file?.location;
+
+    const projectData = await Project.create({
+      projectName,
+      projectImg,
+      projectDesc,
+      softwareStack,
+      learnedInfo,
+      github,
+    });
+
+    res.status(201).json({
+      message: `${projectName} created.`,
+      project: projectData,
+    });
   } catch (error) {
     next(error);
   }
@@ -74,15 +72,14 @@ const updateProject = async (
   res: Response,
   next: NextFunction
 ) => {
-  const projectId = req.params.id;
-  const projectBody = req.body;
-  const projectName = req.body.projectName;
-  const updatedProject = await Project.findByIdAndUpdate(
-    projectId,
-    projectBody
-  );
-
   try {
+    const projectId = req.params.id;
+    const projectBody = req.body;
+    const projectName = req.body.projectName;
+    const updatedProject = await Project.findByIdAndUpdate(
+      projectId,
+      projectBody
+    );
     res
       .status(200)
       .json({ Message: `${projectName} updated.`, updatedProject });
@@ -96,9 +93,9 @@ const deleteProject = async (
   res: Response,
   next: NextFunction
 ) => {
-  const projectId = req.params.id;
-  await Project.findByIdAndRemove(projectId);
   try {
+    const projectId = req.params.id;
+    await Project.findByIdAndRemove(projectId);
     res.status(200).json({ message: `ID: ${projectId} deleted.` });
   } catch (error) {
     next(error);
