@@ -1,6 +1,6 @@
 import React from "react";
 
-const AboutView: React.FC<IAboutView> = () => {
+const AboutView = (props: AboutViewProps) => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">
@@ -10,6 +10,6 @@ const AboutView: React.FC<IAboutView> = () => {
   );
 };
 
-interface IAboutView {}
+type AboutViewProps = {}
 
 export default AboutView;

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-const Card: React.FC<ICard> = ({ projectData }) => {
+const Card = ({ projectData }: ProjectCardProps): ReactElement => {
   return (
     <>
       <main className="card-compact h-screen justify-center w-full flex flex-row flex-wrap text-center">
@@ -31,12 +31,14 @@ const Card: React.FC<ICard> = ({ projectData }) => {
   );
 };
 
-interface ICard {
-  projectData?: Array<{
-    _id?: string;
-    projectName?: string;
-    projectDesc?: string;
-    projectImg?: string;
-  }>;
+type ProjectCardProps = {
+  projectData?: Array<ProjectCardBody>
+}
+
+type ProjectCardBody = {
+  _id: string;
+  projectName: string;
+  projectDesc: string;
+  projectImg: string;
 }
 export default Card;

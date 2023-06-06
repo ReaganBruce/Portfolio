@@ -9,8 +9,8 @@ import IsError from "../components/status/IsError";
 import IsEmpty from "../components/status/IsEmpty";
 import Card from "../components/Card";
 
-const Projects: React.FC<IProjects> = () => {
-  const { data: projectData, isError, isLoading, isIdle } = useProjectsQuery();
+const Projects = (props: ProjectsProps) => {
+  const { data, isError, isLoading } = useProjectsQuery();
 
   if (isLoading) {
     return <IsLoading />;
@@ -23,15 +23,15 @@ const Projects: React.FC<IProjects> = () => {
   //any is bad, I know. this will be fixed :)
   return (
     <>
-      {(projectData?.Projects?.length as any) <= 0 ? (
+      {(data?.projects.length as any) <= 0 ? (
         <IsEmpty />
       ) : (
-        <Card projectData={projectData?.Projects as any} />
+        <Card projectData={data?.projects as any} />
       )}
     </>
   );
 };
 
-interface IProjects {}
+type ProjectsProps = {};
 
 export default Projects;

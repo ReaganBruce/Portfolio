@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav: React.FC<INav> = () => {
+const Nav = (props: NavProps) => {
   return (
     <>
       <div className="navbar bg-base-100">
@@ -28,29 +28,19 @@ const Nav: React.FC<INav> = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to={'/'}>
-                    Home
-                </Link>
+                <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link to={'/admin'}>
-                    Admin
-                </Link>
+                <Link to={"/admin"}>Admin</Link>
               </li>
               <li>
-                <Link to={'/projects'}>
-                    Projects
-                </Link>
+                <Link to={"/projects"}>Projects</Link>
               </li>
               <li>
-              <Link to={'/about'}>
-                    About
-                </Link>
+                <Link to={"/about"}>About</Link>
               </li>
               <li>
-              <Link to={'/interests'}>
-                    Interests
-                </Link>
+                <Link to={"/interests"}>Interests</Link>
               </li>
             </ul>
           </div>
@@ -58,13 +48,12 @@ const Nav: React.FC<INav> = () => {
         <div className="navbar-center">
           <a className="btn btn-ghost normal-case text-3xl">VIBING</a>
         </div>
-        <div className="navbar-end">
-        </div>
+        <div className="navbar-end"></div>
       </div>
     </>
   );
 };
 
-interface INav { }
+type NavProps = {};
 
 export default Nav;

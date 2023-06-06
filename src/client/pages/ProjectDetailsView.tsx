@@ -12,27 +12,21 @@ import IsLoading from "../components/status/IsLoading";
 import IsError from "../components/status/IsError";
 import IsDeleted from "../components/status/IsDeleted";
 
-const ProjectDetails: React.FC<IProjectDetails> = () => {
+const ProjectDetails = (props: ProjectDetailsProps) => {
   const [modal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
   const { projectId } = useParams();
-  const {
-    data: projectDetails,
-    isError,
-    isLoading,
-  } = useProjectDetailsQuery(projectId as string);
+  const { data, isError, isLoading } = useProjectDetailsQuery(projectId);
 
-  const { mutate: removeProjectBody } = useRemoveProjectQuery(
-    projectId as string
-  );
+  const { mutate: removeProjectBody } = useRemoveProjectQuery();
 
-  const handleDelete = (projectId: string) => {
-    removeProjectBody(projectId);
+  const handleDelete = (projectId?: string) => {
+    removeProjectBody(projectId as string);
     setShowModal(true);
     setTimeout(() => {
       navigate(-1);
-    }, 1500)
+    }, 1500);
   };
 
   if (isLoading) {
@@ -45,23 +39,21 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
 
   return (
     <>
-      <main key={`project-key-${projectDetails?.Project._id}`}>
+      <main key={`project-key-${data?.details?._id}`}>
         <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
           <div className="card-body">
             <h1 className="card-title justify-center">
-              {projectDetails?.Project.projectName}
+              {data?.details?.projectName}
             </h1>
-            <img src={`${projectDetails?.Project.projectImg}`}></img>
+            <img src={`${data?.details?.projectImg}`}></img>
             <button
               className="btn btn-secondary"
-              onClick={() =>
-                handleDelete(projectDetails?.Project._id as string)
-              }
+              onClick={() => handleDelete(data?.details?._id)}
             >
               Delete
             </button>
             <IsDeleted
-              projectName={projectDetails?.Project.projectName as any}
+              projectName={data?.details?.projectName as string}
               showModal={modal}
             />
             <Link to={`/projects/`} className="card-actions justify-center">
@@ -74,6 +66,6 @@ const ProjectDetails: React.FC<IProjectDetails> = () => {
   );
 };
 
-interface IProjectDetails {}
+type ProjectDetailsProps = {};
 
 export default ProjectDetails;

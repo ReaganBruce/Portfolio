@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const IsDeleted: React.FC<IIsDeleted> = ({ projectName, showModal }) => {
+const IsDeleted = ({ projectName, showModal }: IsDeletedProps) => {
   const modalRoot = document.getElementById("modal-root")!;
 
   if (!showModal) {
@@ -22,7 +22,7 @@ const IsDeleted: React.FC<IIsDeleted> = ({ projectName, showModal }) => {
   );
 };
 
-interface IIsDeleted {
+type IsDeletedProps = {
   projectName: string;
   showModal: boolean;
 }

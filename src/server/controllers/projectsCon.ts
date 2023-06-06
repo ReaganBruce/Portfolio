@@ -10,7 +10,7 @@ const allProjects = async (req: Request, res: Response, next: NextFunction) => {
     res.status(200).json({
       message: "Success.",
       count: findProjects.length,
-      Projects: findProjects,
+      projects: findProjects,
     });
   } catch (error) {
     next(error);
@@ -28,8 +28,8 @@ const singleProject = async (
       //Validating BSON ObjectID
       const findProject = await Project.findOne({ _id: projectId });
       res.status(200).json({
-        Message: "Success",
-        Project: findProject,
+        message: "Success",
+        details: findProject,
       });
     } else {
       res.status(404).json({ ERROR: `Mongoose ID: ${projectId} not found.` });
@@ -82,7 +82,7 @@ const updateProject = async (
     );
     res
       .status(200)
-      .json({ Message: `${projectName} updated.`, updatedProject });
+      .json({ message: `${projectName} updated.`, updatedProject });
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 
 //Query Imports
 import { useCreateProjectQuery } from "../services/queries";
@@ -7,7 +6,7 @@ import { useCreateProjectQuery } from "../services/queries";
 //Status Components
 import IsPosted from "./status/isPosted";
 
-const Admin: React.FC<IAdmin> = () => {
+const Admin = (props: AdminProps) => {
 
   const [projectName, setProjectName] = useState("");
   const [projectImg, setProjectImg] = useState<File | null>(null);
@@ -92,8 +91,6 @@ const Admin: React.FC<IAdmin> = () => {
   );
 };
 
-interface IAdmin {
-  projectName?: string;
-}
+type AdminProps = { }
 
 export default Admin;

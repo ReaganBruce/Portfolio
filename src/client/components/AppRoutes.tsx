@@ -12,7 +12,7 @@ import HomeView from "../pages/HomeView";
 //Soon to be Private Routes
 import Admin from "./Admin";
 
-const ClientRoutes: React.FC<IClientRoutes> = () => {
+const ClientRoutes = (props: ClientRouteProps) => {
   return (
     <>
       <Router>
@@ -31,6 +31,6 @@ const ClientRoutes: React.FC<IClientRoutes> = () => {
   );
 };
 
-interface IClientRoutes {}
+type ClientRouteProps = {}
 
 export default ClientRoutes;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const HomeView: React.FC<IHomeView> = () => {
+const HomeView = (props: HomeViewProps) => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">
@@ -10,6 +10,6 @@ const HomeView: React.FC<IHomeView> = () => {
   );
 };
 
-interface IHomeView {}
+type HomeViewProps = {}
 
 export default HomeView;

@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const InterestsView: React.FC<IInterestsView> = () => {
+const InterestsView = (props: InterestsViewProps) => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">
@@ -11,6 +11,6 @@ const InterestsView: React.FC<IInterestsView> = () => {
   );
 };
 
-interface IInterestsView {}
+type InterestsViewProps =  {}
 
 export default InterestsView;
