@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom'
 
-const IsPosted: React.FC<IisPosted> = ({ projectName, showModal }) => {
-  const modalRoot = document.getElementById("modal-root")!;
+const IsPosted = ({ projectName, showModal }: IsPostedProps): ReactElement | null => {
+  const modalRoot = document.getElementById("modal-root") as HTMLElement;
 
   if (!showModal) {
     return null;
@@ -27,7 +27,7 @@ const IsPosted: React.FC<IisPosted> = ({ projectName, showModal }) => {
   );
 };
 
-interface IisPosted {
+type IsPostedProps = {
   projectName?: string;
   showModal: boolean;
 }

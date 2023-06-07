@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //View Imports
@@ -12,7 +12,7 @@ import HomeView from "../pages/HomeView";
 //Soon to be Private Routes
 import Admin from "./Admin";
 
-const ClientRoutes = (props: ClientRouteProps) => {
+const ClientRoutes = (props: ClientRouteProps): ReactElement => {
   return (
     <>
       <Router>

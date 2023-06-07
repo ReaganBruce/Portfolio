@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
 //Query Import
@@ -12,12 +12,12 @@ import IsLoading from "../components/status/IsLoading";
 import IsError from "../components/status/IsError";
 import IsDeleted from "../components/status/IsDeleted";
 
-const ProjectDetails = (props: ProjectDetailsProps) => {
+const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
   const [modal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
   const { projectId } = useParams();
-  const { data, isError, isLoading } = useProjectDetailsQuery(projectId);
+  const { data, error, isError, isLoading } = useProjectDetailsQuery(projectId);
 
   const { mutate: removeProjectBody } = useRemoveProjectQuery();
 
@@ -34,26 +34,26 @@ const ProjectDetails = (props: ProjectDetailsProps) => {
   }
 
   if (isError) {
-    return <IsError />;
+    return <IsError message={error.message} />;
   }
 
   return (
     <>
-      <main key={`project-key-${data?.details?._id}`}>
+      <main key={`project-key-${data?.details._id}`}>
         <div className="card-compact w-96 bg-base-100 shadow-xl p-6 ml-5 mt-5">
           <div className="card-body">
             <h1 className="card-title justify-center">
-              {data?.details?.projectName}
+              {data?.details.projectName}
             </h1>
-            <img src={`${data?.details?.projectImg}`}></img>
+            <img src={`${data?.details.projectImg}`}></img>
             <button
               className="btn btn-secondary"
-              onClick={() => handleDelete(data?.details?._id)}
+              onClick={() => handleDelete(data?.details._id)}
             >
               Delete
             </button>
             <IsDeleted
-              projectName={data?.details?.projectName as string}
+              projectName={data?.details.projectName}
               showModal={modal}
             />
             <Link to={`/projects/`} className="card-actions justify-center">

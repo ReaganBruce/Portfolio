@@ -8,13 +8,14 @@ import {
   createProject,
   deleteProject,
 } from "./base";
+import { AxiosError } from "axios";
 
 const useProjectsQuery = () => {
-  return useQuery<ProjectBody>("projects", fetchAllProjects);
+  return useQuery<ProjectBody, Error>("projects", fetchAllProjects);
 };
 
 const useProjectDetailsQuery = (projectId?: string) => {
-  return useQuery<ProjectDetails>(["projectDetails", projectId], () =>
+  return useQuery<ProjectDetails, Error>(["projectDetails", projectId], () =>
     fetchOneProject(projectId as string)
   );
 };

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-const AboutView = (props: AboutViewProps) => {
+const AboutView = (props: AboutViewProps): ReactElement => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 
-const InterestsView = (props: InterestsViewProps) => {
+const InterestsView = (props: InterestsViewProps): ReactElement => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">

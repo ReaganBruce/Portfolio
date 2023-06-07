@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-const IsEmpty: React.FC<IIsEmpty> = () => {
+const IsEmpty = (props: IsEmptyProps): ReactElement => {
   return (
     <>
       <div className="alert alert-warning shadow-lg">
@@ -25,6 +25,6 @@ const IsEmpty: React.FC<IIsEmpty> = () => {
   );
 };
 
-interface IIsEmpty {}
+type IsEmptyProps = {};
 
 export default IsEmpty;

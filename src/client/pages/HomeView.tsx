@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-const HomeView = (props: HomeViewProps) => {
+const HomeView = (props: HomeViewProps): ReactElement => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">

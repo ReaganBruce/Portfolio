@@ -9,25 +9,21 @@ export type Project = {
   createdAt: string;
   learnedInfo: string;
   projectDesc: string;
-  projectImg: {
-    data: Buffer;
-  };
+  projectImg: string;
   projectName: string;
   softwareStack: string[];
-  github?: string;
+  github: string;
 };
 
 export type ProjectDetails = {
   details: {
-    _id?: string; //mongodb id is type string
-    createdAt?: string;
-    learnedInfo?: string;
-    projectDesc?: string;
-    projectImg?: {
-      data: Buffer;
-    };
-    projectName?: string;
-    softwareStack?: string[];
-    github?: string;
+    _id: string; //mongodb id is type string
+    createdAt: string;
+    learnedInfo: string;
+    projectDesc: string;
+    projectImg: string;
+    projectName: string;
+    softwareStack: string[];
+    github: string;
   };
 };

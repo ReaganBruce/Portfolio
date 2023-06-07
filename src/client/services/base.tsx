@@ -5,7 +5,7 @@ import { ProjectBody, ProjectDetails } from "./types";
 //GET: localhost:3000/api/projects/
 const fetchAllProjects = async () => {
   try {
-    const response = await axios.get<ProjectBody>("/api/projects/");
+    const response = await axios.get<ProjectBody>("/api/projects/"); //FIX 
     return response.data as ProjectBody;
   } catch (error) {
     throw error

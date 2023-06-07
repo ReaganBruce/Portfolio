@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-const Nav = (props: NavProps) => {
+const Nav = (props: NavProps): ReactElement => {
   return (
     <>
       <div className="navbar bg-base-100">

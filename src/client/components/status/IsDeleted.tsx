@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement, ReactPortal } from "react";
 import ReactDOM from "react-dom";
 
-const IsDeleted = ({ projectName, showModal }: IsDeletedProps) => {
-  const modalRoot = document.getElementById("modal-root")!;
+const IsDeleted = ({ projectName, showModal }: IsDeletedProps): ReactElement | null => {
+  const modalRoot = document.getElementById("modal-root") as HTMLElement;
 
   if (!showModal) {
     return null;
@@ -23,7 +23,7 @@ const IsDeleted = ({ projectName, showModal }: IsDeletedProps) => {
 };
 
 type IsDeletedProps = {
-  projectName: string;
+  projectName?: string;
   showModal: boolean;
 }
 

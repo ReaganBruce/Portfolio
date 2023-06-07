@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-const IsError: React.FC<IIsError> = () => {
+const IsError = ({ message }: IsErrorProps): ReactElement => {
   return (
     <>
       <div className="alert alert-error shadow-lg">
@@ -18,13 +18,15 @@ const IsError: React.FC<IIsError> = () => {
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>Error! Unable to fetch data!</span>
+          <h1>ERROR: {message}!</h1>
         </div>
       </div>
     </>
   );
 };
 
-interface IIsError {}
+type IsErrorProps = {
+  message: string
+}
 
 export default IsError;
