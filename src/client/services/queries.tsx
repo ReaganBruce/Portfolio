@@ -8,7 +8,6 @@ import {
   createProject,
   deleteProject,
 } from "./base";
-import { AxiosError } from "axios";
 
 const useProjectsQuery = () => {
   return useQuery<ProjectBody, Error>("projects", fetchAllProjects);

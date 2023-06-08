@@ -10,7 +10,7 @@ import InterestsView from "../pages/InterestsView";
 import HomeView from "../pages/HomeView";
 
 //Soon to be Private Routes
-import Admin from "./Admin";
+import Admin from "../pages/Admin";
 
 const ClientRoutes = (props: ClientRouteProps): ReactElement => {
   return (
