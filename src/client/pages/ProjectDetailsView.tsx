@@ -56,6 +56,9 @@ const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
               projectName={data?.details.projectName}
               showModal={modal}
             />
+            <a className="link link-success" href={data?.details.github}>
+              Github
+            </a>
             <Link to={`/projects/`} className="card-actions justify-center">
               <button className="btn btn-primary">Go Back</button>
             </Link>

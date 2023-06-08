@@ -1,10 +1,10 @@
 //wrapper needed as /api/projects/ is an array of objects.
 // example: data : { Projects: [ { } ] }
-export type ProjectBody = {
-  projects: Array<Project>;
-};
+export interface ProjectBody extends FormData {
+  projects?: Array<Project>;
+}
 
-export type Project = {
+export interface Project {
   _id: string; //mongodb id is type string
   createdAt: string;
   learnedInfo: string;
@@ -13,9 +13,9 @@ export type Project = {
   projectName: string;
   softwareStack: string[];
   github: string;
-};
+}
 
-export type ProjectDetails = {
+export interface ProjectDetails {
   details: {
     _id: string; //mongodb id is type string
     createdAt: string;
@@ -26,4 +26,4 @@ export type ProjectDetails = {
     softwareStack: string[];
     github: string;
   };
-};
+}

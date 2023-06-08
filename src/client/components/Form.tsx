@@ -3,8 +3,10 @@ import React, { ReactElement } from "react";
 const Form = ({
   projectName,
   projectDesc,
+  projectGithub,
   submitProjectName,
   submitProjectDesc,
+  submitProjectGithub,
   submitProjectImg,
   submitProject,
 }: FormProps): ReactElement => {
@@ -48,7 +50,21 @@ const Form = ({
               className="textarea textarea-bordered textarea-lg w-full max-w-xs"
               onChange={submitProjectDesc}
             ></textarea>
-            <button className="btn btn-primary mt-8" onClick={submitProject}>
+          </div>
+        </section>
+        <section className="flex justify-center items-center pt-10">
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Github Link</span>
+            </label>
+            <input
+              value={projectGithub}
+              type="text"
+              placeholder="Github Link"
+              className="input input-bordered w-full max-w-xs"
+              onChange={submitProjectGithub}
+            />
+              <button className="btn btn-primary mt-8" onClick={submitProject}>
               Create Test Project
             </button>
           </div>
@@ -61,9 +77,11 @@ const Form = ({
 type FormProps = {
   projectName: string;
   projectDesc: string;
+  projectGithub: string;
   submitProjectName: React.ChangeEventHandler;
   submitProjectDesc: React.ChangeEventHandler;
-  submitProjectImg?: React.ChangeEventHandler;
+  submitProjectGithub: React.ChangeEventHandler;
+  submitProjectImg: React.ChangeEventHandler;
   submitProject: React.MouseEventHandler;
 };
 
