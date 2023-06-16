@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-const IsLoading: React.FC<IIsLoading> = () => {
+const IsLoading = (props: IsLoadingProps): ReactElement => {
   return (
     <>
       <div className="flex h-screen justify-center items-center">
@@ -12,6 +12,6 @@ const IsLoading: React.FC<IIsLoading> = () => {
   );
 };
 
-interface IIsLoading {}
+type IsLoadingProps = {};
 
 export default IsLoading;

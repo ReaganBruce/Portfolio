@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //View Imports
 import Nav from "./Nav";
-import ProjectDetailsView from "../pages/ProjectDetailsView";
-import ProjectsView from "../pages/ProjectsView";
-import AboutView from "../pages/AboutView";
-import InterestsView from "../pages/InterestsView";
-import HomeView from "../pages/HomeView";
+import ProjectDetailsView from "../views/ProjectDetailsView";
+import ProjectsView from "../views/ProjectsView";
+import AboutView from "../views/AboutView";
+import InterestsView from "../views/InterestsView";
+import HomeView from "../views/HomeView";
 
 //Soon to be Private Routes
-import Admin from "../pages/Admin";
+import Admin from "../views/Admin";
 
 const ClientRoutes = (props: ClientRouteProps): ReactElement => {
   return (

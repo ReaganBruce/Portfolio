@@ -5,9 +5,8 @@ import { useProjectsQuery } from "../services/queries";
 
 //Component Imports
 import IsLoading from "../components/status/IsLoading";
-import IsError from "../components/status/IsError";
-import IsEmpty from "../components/status/IsEmpty";
 import Card from "../components/Card";
+import Alert from "../components/status/Alert";
 
 const Projects = (props: ProjectsProps): ReactElement => {
   const { data, error, isError, isLoading } = useProjectsQuery();
@@ -17,13 +16,13 @@ const Projects = (props: ProjectsProps): ReactElement => {
   }
 
   if (isError) {
-    return <IsError message={error.message} />
+    return <Alert children={error.message} color="alert alert-error" />;
   }
 
   return (
     <>
       {(data?.projects?.length as number) <= 0 ? (
-        <IsEmpty />
+        <Alert children="No projects found." color="alert alert-info" />
       ) : (
         <Card projectData={data?.projects} />
       )}

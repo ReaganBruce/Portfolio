@@ -27,10 +27,21 @@ const Admin = (props: AdminProps) => {
   const handleSubmitProject = (e: React.MouseEvent<HTMLButtonElement>) => {
     const formData: FormData = new FormData();
 
+    if (
+      projectName === "" ||
+      projectDesc === "" ||
+      projectGithub === "" ||
+      projectImg === null ||
+      learnedInfo === ""
+    ) {
+      throw new Error("Please fill in all fields....Reagan");
+    }
+
     formData.append("projectName", projectName);
     formData.append("projectDesc", projectDesc);
     formData.append("github", projectGithub);
-    formData.append("projectFileUpload", projectImg as File);
+    formData.append("projectFileUpload", projectImg);
+    formData.append("learnedInfo", learnedInfo);
     createNewProject(formData);
     e.preventDefault();
     setShowModal(true);
@@ -59,6 +70,14 @@ const Admin = (props: AdminProps) => {
           }}
         >
           Project Description
+        </TextArea>
+        <TextArea
+          value={learnedInfo}
+          change={(e) => {
+            setLearnedInfo(e.target.value);
+          }}
+        >
+          Learned Information
         </TextArea>
         <Input
           value={projectGithub}

@@ -9,8 +9,8 @@ import {
 
 //Component Imports
 import IsLoading from "../components/status/IsLoading";
-import IsError from "../components/status/IsError";
 import IsDeleted from "../components/status/IsDeleted";
+import Alert from "../components/status/Alert";
 
 const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
   const [modal, setShowModal] = useState(false);
@@ -34,7 +34,7 @@ const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
   }
 
   if (isError) {
-    return <IsError message={error.message} />;
+    return <Alert children={error.message} color="alert alert-error"/>;
   }
 
   return (
