@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 //Query Imports
 import { useCreateProjectQuery } from "../services/queries";
 
 //Status Components
-import IsPosted from "../components/status/isPosted";
+import Modal from "../components/status/Modal";
 
 //Form Components
 import Input from "../components/form/Input";
@@ -34,7 +35,7 @@ const Admin = (props: AdminProps) => {
       projectImg === null ||
       learnedInfo === ""
     ) {
-      throw new Error("Please fill in all fields....Reagan");
+      throw new Error("Please fill in all fields....");
     }
 
     formData.append("projectName", projectName);
@@ -89,7 +90,15 @@ const Admin = (props: AdminProps) => {
         </Input>
         <Submit click={handleSubmitProject}>Create Project</Submit>
       </form>
-      <IsPosted projectName={projectName} showModal={showModal} />
+      <Modal
+        children={`Project posted: ${projectName}`}
+        showModal={showModal}
+        link={
+          <Link to={`/projects`} className="card-actions justify-center mt-7">
+            <button className="btn btn-primary">View</button>
+          </Link>
+        }
+      />
     </>
   );
 };

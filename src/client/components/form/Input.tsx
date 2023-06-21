@@ -11,7 +11,7 @@ const Input = ({ children, value, change }: InputProps): ReactElement => {
           <input
             value={value}
             type="text"
-            placeholder={children.slice(8).toLowerCase() + "...."}
+            placeholder={`${children.slice(8).toLowerCase()}....`}
             className="input input-bordered w-full max-w-xs"
             onChange={change}
             required

@@ -10,7 +10,7 @@ const TextArea = ({ children, value, change }: TextAreaProps): ReactElement => {
           </label>
           <textarea
             value={value}
-            placeholder={children.slice(8).toLowerCase() + "...."}
+            placeholder={`${children.slice(8).toLowerCase()}....`}
             className="textarea textarea-bordered textarea-lg w-full max-w-xs"
             onChange={change}
             required

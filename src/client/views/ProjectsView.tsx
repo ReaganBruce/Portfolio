@@ -4,7 +4,7 @@ import React, { ReactElement } from "react";
 import { useProjectsQuery } from "../services/queries";
 
 //Component Imports
-import IsLoading from "../components/status/IsLoading";
+import Loading from "../components/status/Loading";
 import Card from "../components/Card";
 import Alert from "../components/status/Alert";
 
@@ -12,7 +12,7 @@ const Projects = (props: ProjectsProps): ReactElement => {
   const { data, error, isError, isLoading } = useProjectsQuery();
 
   if (isLoading) {
-    return <IsLoading />;
+    return <Loading />;
   }
 
   if (isError) {
@@ -30,6 +30,8 @@ const Projects = (props: ProjectsProps): ReactElement => {
   );
 };
 
-type ProjectsProps = {};
+type ProjectsProps = {
+
+};
 
 export default Projects;

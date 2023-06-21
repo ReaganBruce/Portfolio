@@ -8,12 +8,12 @@ import {
 } from "../services/queries";
 
 //Component Imports
-import IsLoading from "../components/status/IsLoading";
-import IsDeleted from "../components/status/IsDeleted";
+import Loading from "../components/status/Loading";
 import Alert from "../components/status/Alert";
+import Modal from "../components/status/Modal";
 
 const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
-  const [modal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
   const { projectId } = useParams();
@@ -30,11 +30,11 @@ const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
   };
 
   if (isLoading) {
-    return <IsLoading />;
+    return <Loading />;
   }
 
   if (isError) {
-    return <Alert children={error.message} color="alert alert-error"/>;
+    return <Alert children={error.message} color="alert alert-error" />;
   }
 
   return (
@@ -52,9 +52,9 @@ const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
             >
               Delete
             </button>
-            <IsDeleted
-              projectName={data?.details.projectName}
-              showModal={modal}
+            <Modal
+              children={`Project Deleted: ${data?.details.projectName}`}
+              showModal={showModal}
             />
             <a className="link link-success" href={data?.details.github}>
               Github
