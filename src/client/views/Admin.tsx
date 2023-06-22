@@ -19,7 +19,7 @@ const Admin = (props: AdminProps) => {
   const [projectGithub, setProjectGithub] = useState("");
   const [projectImg, setProjectImg] = useState<File | null>(null);
   const [learnedInfo, setLearnedInfo] = useState("");
-  const [softwareStack, setSoftwareStack] = useState([""]);
+  const [softwareStack, setSoftwareStack] = useState<Array<String>>([]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -33,7 +33,8 @@ const Admin = (props: AdminProps) => {
       projectDesc === "" ||
       projectGithub === "" ||
       projectImg === null ||
-      learnedInfo === ""
+      learnedInfo === "" ||
+      softwareStack === null
     ) {
       throw new Error("Please fill in all fields....");
     }
@@ -43,6 +44,10 @@ const Admin = (props: AdminProps) => {
     formData.append("github", projectGithub);
     formData.append("projectFileUpload", projectImg);
     formData.append("learnedInfo", learnedInfo);
+    softwareStack.forEach((stack: any) => {
+      formData.append("softwareStack", stack);
+      console.log(stack);
+    });
     createNewProject(formData);
     e.preventDefault();
     setShowModal(true);
@@ -87,6 +92,15 @@ const Admin = (props: AdminProps) => {
           }}
         >
           Project GitHub
+        </Input>
+        <Input
+          value={softwareStack.join(",")}
+          change={(e) => {
+            const inputValues = e.target.value.split(",");
+            setSoftwareStack(inputValues);
+          }}
+        >
+          Software Stack
         </Input>
         <Submit click={handleSubmitProject}>Create Project</Submit>
       </form>

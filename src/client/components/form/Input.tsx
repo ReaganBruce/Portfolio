@@ -24,8 +24,8 @@ const Input = ({ children, value, change }: InputProps): ReactElement => {
 
 type InputProps = {
   children: React.ReactNode | any;
-  value: string;
-  change: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string | string[];
+  change: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 };
 
 export default Input;

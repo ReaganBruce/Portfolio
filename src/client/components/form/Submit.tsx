@@ -5,7 +5,7 @@ const Submit = ({ children, click }: SubmitProps): ReactElement => {
     <>
       <section className="flex justify-center items-center pt-10">
         <div className="form-control w-full max-w-xs">
-          <button className="btn btn-primary mt-8" onClick={click}>
+          <button className="btn btn-primary mt-2" onClick={click}>
             {children}
           </button>
         </div>

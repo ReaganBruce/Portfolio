@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IProject extends Document {
-  projectName?: string;
+  projectName?: String;
   projectImg?: Buffer;
-  projectDesc?: string;
-  softwareStack?: [String];
-  learnedInfo?: string;
-  github?: string;
+  projectDesc?: String;
+  softwareStack?: Array<string>;
+  learnedInfo?: String;
+  github?: String;
   createdAt: Date;
 }
 
@@ -25,7 +25,7 @@ const ProjectSchema: Schema = new Schema({
     maxlength: 280,
   },
   softwareStack: {
-    type: [String],
+    type: Array<String>,
     required: false,
   },
   learnedInfo: {

@@ -25,7 +25,7 @@ const Card = ({ projectData }: ProjectCardProps): ReactElement => {
                 </div>
                 <span className="card-actions pr-10 mt-3">
                   Created:
-                  <Moment format="DD/MM/YYYY">{project.createdAt}</Moment>
+                  <Moment format="MM/DD/YYYY">{project.createdAt}</Moment>
                 </span>
               </div>
             </section>

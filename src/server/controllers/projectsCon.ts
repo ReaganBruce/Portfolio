@@ -62,6 +62,7 @@ const createProject = async (
       message: `${projectName} created.`,
       project: projectData,
     });
+    console.log(projectData);
   } catch (error) {
     next(error);
   }
