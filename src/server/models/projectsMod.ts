@@ -22,7 +22,6 @@ const ProjectSchema: Schema = new Schema({
   projectDesc: {
     type: String,
     required: true,
-    maxlength: 280,
   },
   softwareStack: {
     type: Array<String>,
