@@ -18,5 +18,8 @@ export default {
         access: process.env.ACCESS_KEY,
         secret: process.env.SECRET_ACCESS_KEY,
         bucket: process.env.BUCKET
+    },
+    jwt: {
+        token: process.env.TOKEN
     }
 };
