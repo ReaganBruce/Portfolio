@@ -6,6 +6,7 @@ import path from "path";
 
 //Config Import
 import { databaseConnection } from "./configs/db";
+import { configurePassport } from "./middleware/passport-strategies";
 import config from "./configs/index";
 
 //Route Import
@@ -22,6 +23,9 @@ const app = express();
 
 //Database Connection
 databaseConnection();
+
+//Passport Connection
+configurePassport(app)
 
 app.use(express.static("public"));
 app.use(express.json());

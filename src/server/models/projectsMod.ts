@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IProject extends Document {
-  projectName?: String;
+  projectName?: string;
   projectImg?: Buffer;
-  projectDesc?: String;
+  projectDesc?: string;
   softwareStack?: Array<string>;
-  learnedInfo?: String;
-  github?: String;
+  learnedInfo?: string;
+  github?: string;
   createdAt: Date;
 }
 

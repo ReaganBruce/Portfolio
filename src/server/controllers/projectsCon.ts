@@ -1,10 +1,11 @@
-import { NextFunction, Request, Response } from "express";
+import { RequestResponse } from "../types/aliases";
+
 import mongoose from "mongoose";
 
 //MongoDB Schema Import
 import { Project } from "../models/projectsMod";
 
-const allProjects = async (req: Request, res: Response, next: NextFunction) => {
+const allProjects: RequestResponse = async (req, res, next) => {
   try {
     const findProjects = await Project.find();
     res.status(200).json({
@@ -17,11 +18,7 @@ const allProjects = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const singleProject = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const singleProject: RequestResponse = async (req, res, next) => {
   try {
     const projectId = req.params.id;
     if (mongoose.Types.ObjectId.isValid(projectId)) {
@@ -39,11 +36,7 @@ const singleProject = async (
   }
 };
 
-const createProject = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const createProject: RequestResponse = async (req, res, next) => {
   try {
     const { projectName, projectDesc, softwareStack, learnedInfo, github } =
       req.body;
@@ -57,22 +50,17 @@ const createProject = async (
       learnedInfo,
       github,
     });
-
+    await projectData.save();
     res.status(201).json({
       message: `${projectName} created.`,
       project: projectData,
     });
-    console.log(projectData);
   } catch (error) {
     next(error);
   }
 };
 
-const updateProject = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const updateProject: RequestResponse = async (req, res, next) => {
   try {
     const projectId = req.params.id;
     const projectBody = req.body;
@@ -81,19 +69,17 @@ const updateProject = async (
       projectId,
       projectBody
     );
+
+    await updatedProject?.save()
     res
       .status(200)
-      .json({ message: `${projectName} updated.`, updatedProject });
+      .json({ message: `${projectName} updated.` });
   } catch (error) {
     next(error);
   }
 };
 
-const deleteProject = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const deleteProject: RequestResponse = async (req, res, next) => {
   try {
     const projectId = req.params.id;
     await Project.findByIdAndRemove(projectId);

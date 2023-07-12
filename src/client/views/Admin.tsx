@@ -19,7 +19,7 @@ const Admin = (props: AdminProps) => {
   const [projectGithub, setProjectGithub] = useState("");
   const [projectImg, setProjectImg] = useState<File | null>(null);
   const [learnedInfo, setLearnedInfo] = useState("");
-  const [softwareStack, setSoftwareStack] = useState<Array<String>>([]);
+  const [softwareStack, setSoftwareStack] = useState<Array<string>>([]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -44,9 +44,8 @@ const Admin = (props: AdminProps) => {
     formData.append("github", projectGithub);
     formData.append("projectFileUpload", projectImg);
     formData.append("learnedInfo", learnedInfo);
-    softwareStack.forEach((stack: any) => {
+    softwareStack.forEach((stack: string) => {
       formData.append("softwareStack", stack);
-      console.log(stack);
     });
     createNewProject(formData);
     e.preventDefault();

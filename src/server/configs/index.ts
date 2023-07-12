@@ -20,6 +20,6 @@ export default {
         bucket: process.env.BUCKET
     },
     jwt: {
-        token: process.env.TOKEN
+        token: process.env.JWT_SECRET
     }
 };
