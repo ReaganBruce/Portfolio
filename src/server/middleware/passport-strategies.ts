@@ -15,7 +15,7 @@ const configurePassport = (app: Application) => {
     passport.use(new PassportLocal.Strategy({ usernameField: "username", session: false}, async (username, password, done) => {
         try {
             const adminFound = await Admin.findOne({ "username": username });
-            //check if admin and admin password have both been successfully compared
+            //check if admin and admin password both exist, then compare
             if (adminFound && adminFound.password && compareHash(password, adminFound.password)) {
                 delete adminFound.password
                 done(null, adminFound)
