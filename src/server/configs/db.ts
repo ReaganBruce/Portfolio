@@ -2,7 +2,7 @@ import mongoose, { ConnectOptions } from "mongoose";
 import config from ".";
 
 const databaseConnection = async () => {
-  const mongoUri = String(config.database.mongo);
+  const mongoUri = config.database.mongo;
   try {
     await mongoose.connect(mongoUri, <ConnectOptions>{
       useUnifiedTopology: true,

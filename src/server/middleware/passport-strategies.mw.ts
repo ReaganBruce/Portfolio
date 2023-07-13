@@ -4,7 +4,7 @@ import PassportLocal from 'passport-local'
 
 import config from '../configs'
 import { Application } from 'express'
-import { Admin } from '../models/authMod'
+import { Admin } from '../models/auth.model'
 import { compareHash } from '../utils/saltAndHash'
 import { Payload } from '../types/types'
 

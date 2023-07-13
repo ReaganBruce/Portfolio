@@ -1,4 +1,4 @@
-import { IAdmin } from "../models/authMod";
+import { IAdmin } from "../models/auth.model";
 
 
 export interface Payload extends IAdmin {

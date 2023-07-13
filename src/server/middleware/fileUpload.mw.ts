@@ -6,7 +6,7 @@ const uploadProjectImage = multer({
   storage: multerS3({
     s3: s3Config,
     acl: "public-read",
-    bucket: String(process.env.BUCKET),
+    bucket: process.env.BUCKET,
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },

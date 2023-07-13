@@ -1,6 +1,6 @@
 import config from "../configs";
 import jwt from "jsonwebtoken";
-import { Admin } from "../models/authMod";
+import { Admin } from "../models/auth.model";
 import { generateSaltAndHash } from "../utils/saltAndHash";
 import { RequestResponse } from "../types/aliases";
 
@@ -25,7 +25,7 @@ const register: RequestResponse = async (req, res, next) => {
 
 const login: RequestResponse = async (req, res, next) => {
   try {
-    const token = jwt.sign({ username: req.body.username }, String(config.jwt.token), { expiresIn: "1hr" }, );
+    const token = jwt.sign({ _id: req.body._id, username: req.body.username }, String(config.jwt.token), { expiresIn: "1hr" }, );
     res.json({ token });
   } catch (err) {
     res.status(500).json({ message: err });

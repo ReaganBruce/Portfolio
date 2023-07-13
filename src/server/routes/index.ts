@@ -1,9 +1,9 @@
 import { Router } from "express";
 
 //Route Imports
-import projectsRouter from "./api/projects";
-import authRouter from "./api/auth";
-import attemptsRouter from "./api/attempts";
+import projectsRouter from "./api/projects.api";
+import authRouter from "./api/auth.api";
+import attemptsRouter from "./api/attempts.api";
 
 const router = Router();
 

@@ -3,7 +3,7 @@ import { RequestResponse } from "../types/aliases";
 import mongoose from "mongoose";
 
 //MongoDB Schema Import
-import { Project } from "../models/projectsMod";
+import { Project } from "../models/projects.model";
 
 const allProjects: RequestResponse = async (req, res, next) => {
   try {

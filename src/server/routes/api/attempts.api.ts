@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 //Controller Import
-import attemptsController from "../../controllers/attemptsCon";
+import attemptsController from "../../controllers/attempts.controller";
 
 const router = Router();
 

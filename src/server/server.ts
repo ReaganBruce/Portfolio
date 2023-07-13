@@ -6,7 +6,7 @@ import path from "path";
 
 //Config Import
 import { databaseConnection } from "./configs/db";
-import { configurePassport } from "./middleware/passport-strategies";
+import { configurePassport } from "./middleware/passport-strategies.mw";
 import config from "./configs/index";
 
 //Route Import
@@ -16,7 +16,7 @@ import routes from "./routes/index";
 import client from "./configs/client.json";
 
 //Middleware Import
-import { notFoundHandler, globalErrorHandler } from "./middleware/errorHandler";
+import { notFoundHandler, globalErrorHandler } from "./middleware/errorHandler.mw";
 
 //Application Instance
 const app = express();

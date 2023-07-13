@@ -2,12 +2,12 @@ import mongoose, { Schema, Document } from 'mongoose'
 
 
 export interface IAttempt extends Document {
-    failedUser?: string,
+    failedLogin?: string,
     createdAt: Date
 }
 
 const AttemptSchema: Schema = new Schema({
-    failedUser: {
+    failedLogin: {
         type: String
     },
     createdAt: {

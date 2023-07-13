@@ -1,10 +1,10 @@
 import { Router } from "express";
 
 //Controller Imports
-import projectsController from "../../controllers/projectsCon";
+import projectsController from "../../controllers/projects.controller";
 
 //Multer Import
-import { uploadProjectImage } from "../../utils/fileUpload";
+import { uploadProjectImage } from "../../middleware/fileUpload.mw";
 import passport from "passport";
 
 const router = Router();
