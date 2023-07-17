@@ -5,7 +5,7 @@ export interface ProjectBody extends FormData {
 }
 
 export interface Project {
-  _id: string; //mongodb id is type string
+  _id: string;
   createdAt: string;
   learnedInfo: string;
   projectDesc: string;
@@ -17,7 +17,7 @@ export interface Project {
 
 export interface ProjectDetails {
   details: {
-    _id: string; //mongodb id is type string
+    _id: string;
     createdAt: string;
     learnedInfo: string;
     projectDesc: string;
@@ -26,4 +26,10 @@ export interface ProjectDetails {
     softwareStack: string[];
     github: string;
   };
+}
+
+export interface Admin {
+  username: string;
+  password: string;
+  token?: string;
 }

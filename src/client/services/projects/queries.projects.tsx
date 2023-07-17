@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "react-query";
-import { ProjectBody, ProjectDetails } from "./types";
+import { ProjectBody, ProjectDetails } from "../types";
 
 //Base Imports
 import {
@@ -7,7 +7,7 @@ import {
   fetchAllProjects,
   createProject,
   deleteProject,
-} from "./base";
+} from "./base.projects";
 
 const useProjectsQuery = () => {
   return useQuery<ProjectBody, Error>("projects", fetchAllProjects);

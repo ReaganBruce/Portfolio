@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-const Input = ({ children, value, change }: InputProps): ReactElement => {
+const Input = ({ children, value, placeholder, change }: InputProps): ReactElement => {
   return (
     <>
       <section className="flex justify-center items-center pt-10">
@@ -11,7 +11,7 @@ const Input = ({ children, value, change }: InputProps): ReactElement => {
           <input
             value={value}
             type="text"
-            placeholder={`${children.slice(8).toLowerCase()}....`}
+            placeholder={placeholder}
             className="input input-bordered w-full max-w-xs"
             onChange={change}
             required
@@ -23,7 +23,8 @@ const Input = ({ children, value, change }: InputProps): ReactElement => {
 };
 
 type InputProps = {
-  children: React.ReactNode | any;
+  children: React.ReactNode;
+  placeholder: string;
   value: string | string[];
   change: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 //Query Imports
-import { useCreateProjectQuery } from "../services/queries";
+import { useCreateProjectQuery } from "../services/projects/queries.projects";
 
 //Status Components
 import Modal from "../components/status/Modal";
@@ -57,6 +57,7 @@ const Admin = (props: AdminProps) => {
       <form>
         <Input
           value={projectName}
+          placeholder="projectname"
           change={(e) => {
             setProjectName(e.target.value);
           }}
@@ -86,6 +87,7 @@ const Admin = (props: AdminProps) => {
         </TextArea>
         <Input
           value={projectGithub}
+          placeholder="github"
           change={(e) => {
             setProjectGithub(e.target.value);
           }}
@@ -94,6 +96,7 @@ const Admin = (props: AdminProps) => {
         </Input>
         <Input
           value={softwareStack.join(",")}
+          placeholder="stack"
           change={(e) => {
             const inputValues = e.target.value.split(",");
             setSoftwareStack(inputValues);

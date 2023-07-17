@@ -13,7 +13,7 @@ import config from "./configs/index";
 import routes from "./routes/index";
 
 //Client Import
-import client from "./configs/client.json";
+import client from "./routes/client.json";
 
 //Middleware Import
 import { notFoundHandler, globalErrorHandler } from "./middleware/errorHandler.mw";
@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(routes);
-app.get(client.routes, (req, res) =>
+app.get(client.clientRoutes, (req, res) =>
   res.sendFile(path.join(__dirname, "../public/index.html"))
 );
 app.use(notFoundHandler);

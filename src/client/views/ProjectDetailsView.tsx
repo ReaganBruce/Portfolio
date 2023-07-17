@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   useProjectDetailsQuery,
   useRemoveProjectQuery,
-} from "../services/queries";
+} from "../services/projects/queries.projects";
 
 //Component Imports
 import Loading from "../components/status/Loading";

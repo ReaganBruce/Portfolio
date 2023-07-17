@@ -11,7 +11,6 @@ const compareHash: Passwords = (password, hashedPassword) => {
   if (typeof hashedPassword === 'string') {
      return bcrypt.compareSync(password, hashedPassword); 
     } 
-    
 };
 
 

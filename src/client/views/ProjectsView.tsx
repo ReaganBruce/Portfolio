@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
 //Query Import
-import { useProjectsQuery } from "../services/queries";
+import { useProjectsQuery } from "../services/projects/queries.projects";
 
 //Component Imports
 import Loading from "../components/status/Loading";
@@ -30,8 +30,6 @@ const Projects = (props: ProjectsProps): ReactElement => {
   );
 };
 
-type ProjectsProps = {
-
-};
+type ProjectsProps = {};
 
 export default Projects;
