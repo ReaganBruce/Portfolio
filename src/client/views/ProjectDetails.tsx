@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Outlet } from "react-router-dom";
 
 //Query Import
 import {
@@ -19,8 +19,8 @@ const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
   const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
-  const { projectId } = useParams();
-  const { data, error, isError, isLoading } = useProjectDetailsQuery(projectId);
+  const { id } = useParams();
+  const { data, error, isError, isLoading } = useProjectDetailsQuery(id);
 
   const { mutate: removeProjectBody } = useRemoveProjectQuery();
 
@@ -55,6 +55,15 @@ const ProjectDetails = (props: ProjectDetailsProps): ReactElement => {
         />
 
         <List stack={data?.details.softwareStack}>Software Stack</List>
+        <Link to={`/projects/`} className="card-actions justify-center">
+              <button className="btn btn-primary">Go Back</button>
+            </Link>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleDelete(data?.details._id)}
+            >
+              Delete
+            </button> 
       </main>
     </>
   );
@@ -64,19 +73,12 @@ type ProjectDetailsProps = {};
 
 export default ProjectDetails;
 
-// <Link to={`/projects/`} className="card-actions justify-center">
-//               <button className="btn btn-primary">Go Back</button>
-//             </Link>
+{/* <Link to={`/projects/`} className="card-actions justify-center">
+              <button className="btn btn-primary">Go Back</button>
+            </Link>
 
-// <a className="link link-success" href={data?.details.github}>
-// Github
-// </a>
+<a className="link link-success" href={data?.details.github}>
+Github
+</a> */}
 
-{
-  /* <button
-              className="btn btn-secondary"
-              onClick={() => handleDelete(data?.details._id)}
-            >
-              Delete
-            </button> */
-}
+

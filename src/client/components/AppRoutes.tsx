@@ -3,36 +3,44 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //View Imports
 import Nav from "./Nav";
-import ProjectDetailsView from "../views/ProjectDetailsView";
-import ProjectsView from "../views/ProjectsView";
-import AboutView from "../views/AboutView";
-import InterestsView from "../views/InterestsView";
-import HomeView from "../views/HomeView";
-import Login from "../views/LoginView";
+import ProjectDetails from "../views/ProjectDetails";
+import Projects from "../views/Projects";
+import About from "../views/About";
+import Interests from "../views/Interests";
+import Home from "../views/Home";
+import Login from "../views/Login";
 
 //Soon to be Private Routes
-import Admin from "../views/AdminView";
+import Admin from "../views/Admin";
 
-const ClientRoutes = (props: ClientRouteProps): ReactElement => {
+const AppRoutes = (props: AppRoutesProps): ReactElement => {
   return (
     <>
       <Router>
         <Nav />
         <Routes>
-          <Route path="/projects/:projectId" element={<ProjectDetailsView />}></Route>
-          <Route path="/projects" element={<ProjectsView />}></Route>
-          <Route path="/about" element={<AboutView />}></Route>
-          <Route path="/interests" element={<InterestsView />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<HomeView />}></Route>
-          //Soon to be private
-          <Route path="/admin" element={<Admin />}></Route>
+
+          {/* General Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="interests" element={<Interests />} />
+          <Route path="about" element={<About />} />
+
+          {/* Private Route */}
+          <Route path="admin" element={<Admin />} />
+
+          {/* Project Routes */}
+          <Route path="projects" element={<Projects />} />
+          <Route path="projects/:id" element={<ProjectDetails />} />
+
+
+
         </Routes>
       </Router>
     </>
   );
 };
 
-type ClientRouteProps = {}
+type AppRoutesProps = {}
 
-export default ClientRoutes;
+export default AppRoutes;

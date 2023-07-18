@@ -17,6 +17,7 @@ const fetchOneProject = async (projectId: string) => {
     const response = await axios.get<ProjectDetails>(
       `/api/project/${projectId}`
     );
+    console.log(response.data)
     return response.data;
   } catch (error) {
     throw error;
@@ -26,7 +27,11 @@ const fetchOneProject = async (projectId: string) => {
 //POST: localhost:3000/api/projects/
 const createProject = async (project: ProjectBody) => {
   try {
-    const response = await axios.post<ProjectBody>("/api/projects/", project);
+    const response = await axios.post<ProjectBody>("/api/projects/", project, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     return response.data;
   } catch (error) {
     throw error;

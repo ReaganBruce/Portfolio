@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-const Input = ({ children, value, placeholder, change }: InputProps): ReactElement => {
+const Input = ({ children, name, value, placeholder, change }: InputProps): ReactElement => {
   return (
     <>
       <section className="flex justify-center items-center pt-10">
@@ -9,6 +9,7 @@ const Input = ({ children, value, placeholder, change }: InputProps): ReactEleme
             <span className="label-text">{children}</span>
           </label>
           <input
+            name={name}
             value={value}
             type="text"
             placeholder={placeholder}
@@ -24,8 +25,9 @@ const Input = ({ children, value, placeholder, change }: InputProps): ReactEleme
 
 type InputProps = {
   children: React.ReactNode;
+  name: string
   placeholder: string;
-  value: string | string[];
+  value?: string | string[];
   change: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 };
 

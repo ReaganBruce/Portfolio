@@ -7,6 +7,7 @@ import { useProjectsQuery } from "../services/projects/queries.projects";
 import Loading from "../components/status/Loading";
 import Card from "../components/Card";
 import Alert from "../components/status/Alert";
+import { Outlet } from "react-router-dom";
 
 const Projects = (props: ProjectsProps): ReactElement => {
   const { data, error, isError, isLoading } = useProjectsQuery();

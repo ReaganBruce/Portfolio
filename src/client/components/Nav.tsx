@@ -31,19 +31,19 @@ const Nav = (props: NavProps): ReactElement => {
                 <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link to={"/login"}>Login</Link>
+                <Link to={"login"}>Login</Link>
               </li>
               <li>
-                <Link to={"/admin"}>Admin</Link>
+                <Link to={"admin"}>Admin</Link>
               </li>
               <li>
-                <Link to={"/projects"}>Projects</Link>
+                <Link to={"projects"}>Projects</Link>
               </li>
               <li>
-                <Link to={"/about"}>About</Link>
+                <Link to={"about"}>About</Link>
               </li>
               <li>
-                <Link to={"/interests"}>Interests</Link>
+                <Link to={"interests"}>Interests</Link>
               </li>
             </ul>
           </div>

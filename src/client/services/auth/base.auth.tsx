@@ -7,9 +7,8 @@ import { setStorage } from "../storage";
 const adminLogin = async (admin: Admin) => {
     try {
         const response = await axios.post<Admin>("/auth/login", admin)
-        console.log(response.data)
         setStorage("token", response.data.token)
-        return response.data
+        return response.data.token
     } catch (error) {
         throw error
     }

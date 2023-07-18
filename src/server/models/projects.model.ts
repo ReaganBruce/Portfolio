@@ -13,15 +13,15 @@ export interface IProject extends Document {
 const ProjectSchema: Schema = new Schema({
   projectName: {
     type: String,
-    required: true,
+    required: false,
   },
   projectImg: {
     type: String,
-    required: true
+    required: false
   },
   projectDesc: {
     type: String,
-    required: true,
+    required: false,
   },
   softwareStack: {
     type: Array<String>,

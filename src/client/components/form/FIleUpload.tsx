@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-const FileUpload = ({ children, change }: FileUploadProps): ReactElement => {
+const FileUpload = ({ children, value, name, change }: FileUploadProps): ReactElement => {
   return (
     <>
       <section className="flex justify-center items-center pt-10">
@@ -9,6 +9,8 @@ const FileUpload = ({ children, change }: FileUploadProps): ReactElement => {
             <span className="label-text">{children}</span>
           </label>
           <input
+            value={value}
+            name={name}
             type="file"
             className="file-input file-input-bordered file-input-accent w-full max-w-xs"
             onChange={change}
@@ -22,6 +24,8 @@ const FileUpload = ({ children, change }: FileUploadProps): ReactElement => {
 
 type FileUploadProps = {
   children: React.ReactNode | any;
+  value?: string | string[]
+  name: string
   change: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
