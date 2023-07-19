@@ -20,34 +20,34 @@ const Admin = (props: AdminProps) => {
 
   const { mutate: createNewProject } = useCreateProjectQuery();
 
+
   const handleChanges = (e: any) => {
     setValues((prev: any) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
       }
-    })
-
-    setFiles((prev: any) => {
-      return {
-        ...prev,
-        [e.target.image]: e.target.files
-      }
-    })
+    });
   }
 
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    createNewProject(values && files as any);
-    console.log(values)
-    setShowModal(true);
-  };
 
-  //https://stackoverflow.com/questions/41453224/uploading-a-file-with-reactjs-and-dealing-with-c-fakepath-file
+
+  const handleClick = (e: any) => {
+    const formImageData = new FormData()
+    formImageData.append("projectFileUpload", files as any)
+    createNewProject(formImageData, values)
+    setShowModal(true);
+  }
+
+  
+
+
+
   return (
     <>
       <form>
-        <Input
+      <Input
           value={values.projectName || ''}
           name="projectName"
           placeholder="projectname"
@@ -55,42 +55,12 @@ const Admin = (props: AdminProps) => {
         >
           Project Name
         </Input>
-        <FileUpload
+      <FileUpload
           name="projectImg"
-          change={handleChanges}
+          change={(e) => setFiles(e.target.files && e.target.files[0])}
         >
           Project Image Upload
         </FileUpload>
-        <TextArea
-          value={values.projectDesc || ''}
-          name="projectDesc"
-          change={handleChanges}
-        >
-          Project Description
-        </TextArea>
-        <TextArea
-          value={values.learnedInfo || ''}
-          name="learnedInfo"
-          change={handleChanges}
-        >
-          Learned Information
-        </TextArea>
-        <Input
-          value={values.github || ''}
-          name="github"
-          placeholder="github"
-          change={handleChanges}
-        >
-          Project GitHub
-        </Input>
-        <Input
-          value={values.softwareStack || ''}
-          name="softwareStack"
-          placeholder="stack"
-          change={handleChanges}
-        >
-          Software Stack
-        </Input>
         <Submit click={handleClick}>Create Project</Submit>
       </form>
       <Modal
@@ -109,6 +79,52 @@ const Admin = (props: AdminProps) => {
 type AdminProps = {};
 
 export default Admin;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+
+  //   createNewProject();
+  //   console.log(values)
+  //   setShowModal(true);
+  // };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,3 +157,70 @@ export default Admin;
     // softwareStack.forEach((stack: string) => {
     //   formData.append("softwareStack", stack);
     // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  //      
+  //       <TextArea
+  //         value={values.projectDesc || ''}
+  //         name="projectDesc"
+  //         change={handleChanges}
+  //       >
+  //         Project Description
+  //       </TextArea>
+  //       <TextArea
+  //         value={values.learnedInfo || ''}
+  //         name="learnedInfo"
+  //         change={handleChanges}
+  //       >
+  //         Learned Information
+  //       </TextArea>
+  //       <Input
+  //         value={values.github || ''}
+  //         name="github"
+  //         placeholder="github"
+  //         change={handleChanges}
+  //       >
+  //         Project GitHub
+  //       </Input>
+  //       <Input
+  //         value={values.softwareStack || ''}
+  //         name="softwareStack"
+  //         placeholder="stack"
+  //         change={handleChanges}
+  //       >
+  //         Software Stack
+  //       </Input>
