@@ -25,6 +25,7 @@ const fetchOneProject = async (projectId: string) => {
 
 //POST: localhost:3000/api/projects/
 const createProject = async (project: ProjectBody) => {
+
   try {
     const response = await axios.post<ProjectBody>("/api/projects/", project);
     return response.data;

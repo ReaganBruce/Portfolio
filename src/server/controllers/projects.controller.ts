@@ -41,7 +41,7 @@ const createProject: RequestResponse = async (req, res, next) => {
     const { projectName, projectDesc, softwareStack, learnedInfo, github } =
       req.body;
     const projectImg = req.file?.location;
-
+    
     const projectData = await Project.create({
       projectName,
       projectImg,

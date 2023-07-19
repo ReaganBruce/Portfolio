@@ -13,27 +13,27 @@ export interface IProject extends Document {
 const ProjectSchema: Schema = new Schema({
   projectName: {
     type: String,
-    required: false,
+    required: true,
   },
   projectImg: {
     type: String,
-    required: false
+    required: true
   },
   projectDesc: {
     type: String,
-    required: false,
+    required: true,
   },
   softwareStack: {
     type: Array<String>,
-    required: false,
+    required: true,
   },
   learnedInfo: {
     type: String,
-    required: false,
+    required: true,
   },
   github: {
     type: String,
-    required: false,
+    required: true,
   },
   createdAt: {
     type: Date,
